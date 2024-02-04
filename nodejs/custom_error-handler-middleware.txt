@@ -1,0 +1,46 @@
+// ErrorHandler.js
+const ErrorHandler = (err, req, res, next) => {
+    console.log("Middleware Error Hadnling");
+    const errStatus = err.statusCode || 500;
+    const errMsg = err.message || 'Something went wrong';
+    res.status(errStatus).json({
+        success: false,
+        status: errStatus,
+        message: errMsg,
+        stack: process.env.NODE_ENV === 'development' ? err.stack : {}
+    })
+}
+
+export default ErrorHandler
+
+
+then in 
+// index.js (Server Entery File)
+import { AuthRoute, CategoryRoute, HomeRoute, PostRoute, UserRoute } from "./routes/index.routes.js";
+
+import ErrorHandler from "./middlewares/ErrorHandler.js";
+
+
+// init app
+const app = express();
+
+
+// MIDDLEWARES
+app.use("/", HomeRoute);
+app.use("/user", verifyAccessToken, UserRoute);
+app.use("/categories", CategoryRoute);
+app.use("/posts", PostRoute)
+app.use("/auth", AuthRoute);
+
+// ERROR HANDLER MIDDLEWARE (Last middleware to use)
+app.use(ErrorHandler)
+
+
+
+  app.use("/books", (req, res, next) => {
+  try{
+      // code block to be executed
+  }catch(err){
+    next(err);
+  }
+})
