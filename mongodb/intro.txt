@@ -1,1 +1,3 @@
 mongodb orm tool mongoose
+
+find comand is use to get all data
