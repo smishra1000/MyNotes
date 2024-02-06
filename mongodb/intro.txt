@@ -1,3 +1,1 @@
-mongodb orm tool mongoose
-
-find comand is use to get all data
+MongoDB is a most used cross-platform, document oriented database that provides, high availability, high performance and easy scalability. MongoDB works on concept of collection and document the data.
