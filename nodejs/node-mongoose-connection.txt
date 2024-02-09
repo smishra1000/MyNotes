@@ -1,0 +1,50 @@
+Mongoose.module is one of the most powerful external module of the node.js.
+ Mongoose is a MongoDB ODM (Object database Modelling) that is used to 
+ translate the code and its representation from MongoDB to the Node.js server.
+
+Advantages of Mongoose module:
+
+Collection validation of the MongoDB database can be done easily.
+Predefined Structure can be implemented on the collection.
+Constraints can be applied to documents of collections using Mongoose.
+
+npm install mongoose
+
+// Importing mongoose module 
+const mongoose = require("mongoose") 
+  
+// Database Address 
+const url = "mongodb://localhost:27017/test_db"
+  
+// Connecting to database 
+mongoose.connect(url).then((result) => { 
+    console.log("ConnectedSuccessful") 
+}).catch((err) => { 
+    console.log("Error in the Connection") 
+}) 
+
+
+
+How to create models 
+// @/models.js
+const mongoose = require("mongoose");
+
+const UserSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  age: {
+    type: Number,
+    required: true,
+  },
+  isLoggedIn: {
+    type: Boolean,
+    required: false,
+    default: true,
+  },
+});
+
+const User = mongoose.model("User", UserSchema);
+
+module.exports = { User };
