@@ -1,0 +1,84 @@
+Environment variables are one of the most important and core concepts 
+of Nodejs as they allow us to configure our application for multiple
+ environments and allow the application to behave differently for each
+  environment such as development, test, stage, production. 
+  It is commonly used to configure ports, DB connection, host that our 
+  app should connect to for different environments modes
+
+1> Let’s first start by installing dotenv package in our application
+npm i dotenv --save
+2> Create two .env files development.env and production.env
+3>Create a config file to read and set the environment from .env files 
+we created in first step
+4>Create a server.js file as a startup file for our nodeapp
+
+5> Set npm run scripts for multiple environments in package.json
+
+--------development.env --------------
+NODE_ENV=development
+HOST=localhost
+PORT=3000
+-------------------production.env
+
+NODE_ENV=production
+HOST=127.0.0.1
+PORT=8000
+
+
+-------------------create config file ----------------
+The config file will use dotenv library that will allow us to load the
+ desired .env file through the config() method and the path object.
+ Once we read the file we will set the variable to the values of .env 
+ file and export them to use them further in server.js file
+
+//config.js  file
+const dotenv = require('dotenv');
+const path = require('path');
+
+dotenv.config({
+    path: path.resolve(__dirname, `${process.env.NODE_ENV}.env`)
+});
+
+module.exports = {
+    NODE_ENV : process.env.NODE_ENV || 'development',
+    HOST : process.env.HOST || 'localhost',
+    PORT : process.env.PORT || 3000
+}
+
+
+
+
+-----------------create server.js file -----------------
+const config =  require('./config.js');
+const express =  require('express');
+const app =  express();
+let mode = '';
+
+console.log(`NODE_ENV=${config.NODE_ENV}`);
+
+app.get('/', (req, res) => {
+    res.send('Hello World !!');
+});
+
+app.listen(config.PORT, config.HOST, () => {
+    console.log(`APP LISTENING ON http://${config.HOST}:${config.PORT}`);
+})
+
+
+---------------create scripts package json file----
+
+"scripts": {
+    "dev": "set NODE_ENV=development&& node server.js",
+    "prod": "set NODE_ENV=production&& node server.js"
+  },
+
+
+  Now let us run our app in two different modes (development and production) 
+
+  npm run dev
+  npm run prod
+
+
+
+
+  https://dev.to/drsimplegraffiti/from-code-to-the-cloud-a-step-by-step-guide-to-deploying-your-nodejs-app-on-aws-ec2-4300

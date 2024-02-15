@@ -1,0 +1,6 @@
+JSON web token(JWT) is JSON Object which is used to securely transfer 
+information over the web(between two parties). It is generally used 
+for authentication systems and can also be used for information exchange.
+
+This is used to transfer data with encryption over the internet also 
+these tokens can be more secured by using an additional signature
