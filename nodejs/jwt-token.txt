@@ -1,6 +1,23 @@
+There are two different approaches to Managing Sessions in an applications
+
+1>Session or Cookies based approach(statefull)
+In this approach, session Ids are stored in a session DB and the server 
+always needs to verify the session Id hence it is stateful which takes 
+a lot of overhead on the server if there are too many sessions being used 
+in the application
+
+2> Token(JSON Web Tokens) based approach(stateless)
+
 JSON web token(JWT) is JSON Object which is used to securely transfer 
 information over the web(between two parties). It is generally used 
 for authentication systems and can also be used for information exchange.
 
 This is used to transfer data with encryption over the internet also 
 these tokens can be more secured by using an additional signature
+
+In this approach, the server authenticates the client and generates the 
+JWT token, and sends it to the client. Then the client sends the JWT token
+ in the Authorization header on every request and the server does not 
+ maintain any state hence it is stateless and less overhead. JWT tokens 
+ are called Bearer tokens because all the information about the Bearer(User) 
+ is self-contained inside the token
