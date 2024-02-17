@@ -117,3 +117,9 @@ router.post("/profilepic",function(req,res){
     })
    
 })
+
+
+
+
+------------------------then add  these line to show image in frontend -------
+app.use("/uploads",express.static("uploads"))
