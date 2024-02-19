@@ -1,0 +1,52 @@
+------from component call api service method 
+import apiService from "./apiService.jsx"
+apiService.getAllUsers("1234").then((result)=>{
+
+}).catch(function(err){
+
+})
+
+
+const API_BASE_URL = 'http://localhost:7000/';
+
+interface OptionsType {
+user?: any;
+}
+
+const getHeaders: (options?: OptionsType) => Record<string, string> = ({ user } = {}) => {
+const token = user?.accessToken;
+
+return {
+'Content-Type': 'application/json',
+Authorization: `Bearer ${token}`
+};
+};
+
+const apiService = {
+async getAllUsers(userId: string) {
+const endpoint = `users/${userId}/tasks`;
+const headers = getHeaders({ user });
+const response = await fetch(`${API_BASE_URL}/${endpoint}`, { headers });
+return response.json();
+},
+
+async saveTask({ userId, body, user }: { userId: string; body: any; user: any }) {
+const endpoint = `users/${userId}/task`;
+const headers = getHeaders({ user });
+const response = await fetch(`${API_BASE_URL}/${endpoint}`, {
+method: 'POST',
+headers: {
+...headers,
+'Content-Type': 'application/json'
+},
+body: JSON.stringify(body)
+});
+return response;
+},
+
+
+
+
+};
+
+export default apiService;
