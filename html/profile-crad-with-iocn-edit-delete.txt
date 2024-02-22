@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Card</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <style>
+    .contact-card {
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+      border-radius: 5px; /* Rounded corners */
+      margin-bottom: 20px;
+    }
+
+    .contact-card:hover {
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+
+    .contact-card img {
+      border-radius: 50%;
+      max-width: 80px;
+      margin: 10px auto;
+      display: block;
+    }
+
+    .contact-card .card-body {
+      padding: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="contact-card">
+        <img src="https://via.placeholder.com/80" alt="Avatar">
+        <div class="card-body">
+          <h4>Name</h4>
+          <p>Email: example@example.com</p>
+          <p>Phone: +1234567890</p>
+          <p>Address: 123 Main St, City, Country</p>
+          <hr>
+          <div class="text-center">
+            <button class="btn btn-danger btn-sm">Delete</button>
+            <button class="btn btn-primary btn-sm">Edit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
