@@ -1,0 +1,13 @@
+ These operators are used for filtering the data and getting precise results based 
+ on the given conditions
+
+$and	
+$or	
+$not	
+$nor
+
+db.student.find({$and: [{name: "sameer"}, {age: 20}]}).pretty()
+
+db.student.find({$nor: [{name: "sameer"}, {age: 20}]}).pretty()
+
+db.student.find({$or: [{name: "sameer"}, {age: 30}]}).pretty()
