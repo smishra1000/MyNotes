@@ -1,0 +1,29 @@
+MongoDB uses various comparison query operators to compare the values of the documents. 
+
+$eq	It is used to match the values of the fields that are equal to a specified value.
+$ne	It is used to match all values of the field that are not equal to a specified value.
+$gt	It is used to match values of the fields that are greater than a specified value.
+$gte	It is used to match values of the fields that are greater than equal to the specified value.
+$lt	It is used to match values of the fields that are less than a specified valueo
+$lte	It is used to match values of the fields that are less than equals to the specified value
+$in	It is used to match any of the values specified in an array.
+$nin	It is used to match none of the values specified in an array.
+
+
+Matching values using $nin operator:
+db.contributor.find({name: {$nin: ["Amit", "Suman"]}}).pretty()
+
+Matching values using $in operator:
+db.contributor.find({name: {$in: ["Amit", "Suman"]}}).pretty()
+
+selecting those documents where the value of the salary field is less than 2000
+db.contributor.find({salary: {$lt: 2000}}).pretty()
+
+we are selecting those documents where the value of the branch field is equal to CSE
+db.contributor.find({branch: {$eq: "CSE"}}).pretty()
+
+ selecting those documents where the value of the branch field is not equal to CSE
+ db.contributor.find({branch: {$ne: "CSE"}}).pretty()
+
+ selecting those documents where the value of the salary field is greater than 1000.
+ db.contributor.find({salary: {$gt: 1000}}).pretty()

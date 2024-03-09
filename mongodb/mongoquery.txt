@@ -1,0 +1,80 @@
+MongoDB stores data records as documents that are stored together in collections 
+and the database stores one or more collections of documents.
+
+Document: A document is a basic unit of storing data into the database. 
+A single record of a collection is also known as a document. Basically, 
+It is a structure that compromises key & value pairs which is similar to the
+ JSON objects
+
+ Collection: It is used to store a varied number of documents inside the database. 
+ As MongoDB is a Schema-free database, it can store documents that are not the same 
+ in structure. Also, there is no need to define the columns and their datatype. 
+
+ Database: The MongoDB database is a container for collections and it 
+ can store one or more collections. It is not necessary to create a database 
+ before you work on it. The show dbs command gives the list of all the databases. 
+
+ Creating a Database
+In MongoDB, we can create a database using the use command
+use db_name
+
+In MongoDB, we can view all the existing database using the following command:
+show dbs
+
+Creating a Collection
+createCollection() in MongoDB – In MongoDB,collection is created using createCollection() method.Collection name is passed as argument to the method.
+Syntax
+db.createCollection('collection_name')
+
+use student_db;
+//   To create Collection
+db.createCollection('Student');
+// To insert into the collection
+db.Student.insertOne({ Name:"Sameer",Age:30} );
+//To query the collection
+db.Student.find();
+
+Inserting many documents in the collection
+db.myNewCollection2.insertMany([{name:"test1", age:40},
+                                {name:"test2", age:20}])
+
+
+In MongoDB, we can view all the existing collection in the
+database using the following command:
+
+show collections      
+
+Delete the first matched document whose age is 20:
+db.student.deleteOne({age:20})
+
+Delete the first matched document whose age is less than 30:
+db.student.deleteOne({age:{$lt:30}})
+
+Remove all the documents
+db.student.remove({})
+
+Remove all the documents that match the given condition
+db.student.remove({name: "sameer"})
+
+The drop() method removes collections from the database. It also removes all 
+indexes associated with the dropped collection
+db.student.drop()
+
+
+
+In MongoDB, the limit() method limits the number of records or documents that you want. 
+It basically defines the max limit of records/documents that you want
+db.student.find().limit(2)
+
+--------------Dynamic Pagination Example--------------
+We can make pagination dynamic by passing variables instead of hard-coded numbers.
+ Here we define pageSize and pageNum to control our pagination.
+let pageSize = 10;
+let pageNum = 2; // Let's assume we want page 2
+db.collection.find({}).skip(pageSize * (pageNum - 1)).limit(pageSize);
+
+
+
+Basic Sorting by a Single Field
+db.collection.find().sort({ field: 1 }); // ascending order
+db.collection.find().sort({ field: -1 }); // descending order
