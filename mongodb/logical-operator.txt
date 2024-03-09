@@ -1,8 +1,8 @@
- These operators are used for filtering the data and getting precise results based 
- on the given conditions
+These operators are used for filtering the data and getting precise results based 
+on the given conditions
 
 $and	
-$or	
+$or	 
 $not	
 $nor
 
