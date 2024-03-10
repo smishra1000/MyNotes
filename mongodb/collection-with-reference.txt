@@ -1,0 +1,46 @@
+const userTaskSchema = new Schema({
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  taskId: {
+    type: Schema.Types.ObjectId,
+    ref: 'Task',
+    required: true
+  },
+  status: {
+    type: String,
+    enum: ['in-progress', 'completed'],
+    default: 'in-progress'
+  },
+  startDate: {
+    type: Date,
+    default: Date.now
+  },
+  endDate: {
+    type: Date
+  }
+});
+
+const UserTask = mongoose.model('UserTask', userTaskSchema);
+
+module.exports = UserTask;
+
+userId and taskId fields are references to the User and Task schemas respectively.
+
+Populate query 
+
+const UserTask = require('../models/userTaskModel');
+
+// Example query to find user tasks and populate user and task information
+UserTask.find()
+  .populate('userId', 'name email') // Populate user info (name and email fields)
+  .populate('taskId', 'name description') // Populate task info (name and description fields)
+  .exec((err, userTasks) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ message: "Server error" });
+    }
+    res.status(200).json(userTasks);
+  });
