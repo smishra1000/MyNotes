@@ -1,0 +1,119 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+const UserTask = ({ userId }) => {
+  const [tasks, setTasks] = useState([]);
+  const [summary, setSummary] = useState({});
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+
+  useEffect(() => {
+    fetchTasks(currentPage);
+  }, [currentPage]);
+
+  const fetchTasks = async (page) => {
+    try {
+      const response = await axios.get(`/api/userTask/${userId}?page=${page}`);
+      const { tasks, summary, totalPages } = response.data;
+      setTasks(tasks);
+      setSummary(summary);
+      setTotalPages(totalPages);
+    } catch (error) {
+      console.error('Error fetching tasks:', error);
+    }
+  };
+
+  const goToPage = (page) => {
+    setCurrentPage(page);
+  };
+
+  const goToPrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const goToNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  return (
+    <div>
+      <h2>User Tasks</h2>
+      <div>
+        {tasks.map(task => (
+          <div key={task._id}>
+            <p>{task.name}</p>
+            <p>Status: {task.status}</p>
+          </div>
+        ))}
+      </div>
+      <div>
+        <button onClick={goToPrevPage} disabled={currentPage === 1}>Previous</button>
+        <span>Page {currentPage} of {totalPages}</span>
+        <button onClick={goToNextPage} disabled={currentPage === totalPages}>Next</button>
+      </div>
+      <div>
+        <p>Total Tasks: {summary.totalTasks}</p>
+        <p>In Progress: {summary.inProgressCount}</p>
+        <p>Completed: {summary.completedCount}</p>
+      </div>
+    </div>
+  );
+};
+
+export default UserTask;
+
+
+
+------------------------------------------Backend------------------------------------------------
+
+const express = require('express');
+const router = express.Router();
+const Task = require('../models/Task');
+
+// GET request to fetch user tasks and summary with pagination
+router.get("/userTask/:userId", async (req, res) => {
+    const userId = req.params.userId;
+    const page = parseInt(req.query.page) || 1; // Default to page 1
+    const perPage = parseInt(req.query.perPage) || 10; // Default to 10 tasks per page
+
+    try {
+        // Retrieve tasks assigned to the user from the database with pagination
+        const userTasks = await Task.find({ assignedTo: userId })
+                                    .skip((page - 1) * perPage)
+                                    .limit(perPage);
+
+        // Initialize counters
+        let inProgressCount = 0;
+        let completedCount = 0;
+
+        // Count in-progress and completed tasks
+        userTasks.forEach(task => {
+            if (task.status === 'in_progress') {
+                inProgressCount++;
+            } else if (task.status === 'completed') {
+                completedCount++;
+            }
+        });
+
+        // Generate task summary
+        const totalTasks = await Task.countDocuments({ assignedTo: userId });
+        const summary = {
+            totalTasks,
+            inProgressCount,
+            completedCount
+        };
+
+        // Send response with task list, summary, and pagination info
+        res.json({ tasks: userTasks, summary, currentPage: page, totalPages: Math.ceil(totalTasks / perPage) });
+    } catch (error) {
+        // Handle any errors
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+module.exports = router;
+
