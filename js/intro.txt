@@ -1,1 +1,2 @@
 js
+topics - clousre, hoisting, promise
