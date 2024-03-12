@@ -1,0 +1,9 @@
+MongoDB Projection
+MongoDB provides a special feature that is known as Projection. It allows 
+you to select only the necessary data rather than selecting whole data from 
+the document.
+
+db.collection.find() method. In this method, the second parameter is the 
+projection parameter, which is used to specify which fields are returned in
+ the matching documents. Syntax:
+db.collection.find({}, {field1: 1, field2: 0})
