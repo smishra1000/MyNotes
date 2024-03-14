@@ -1,1 +1,1 @@
-css
+css is cascading style sheets. to style our web page we use css
