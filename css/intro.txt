@@ -1,1 +1,3 @@
 css is cascading style sheets. to style our web page we use css
+Css syntax
+selector {css property: value}
