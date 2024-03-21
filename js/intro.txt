@@ -1,2 +1,3 @@
 js
-topics - clousre, hoisting, promise
+topics - clousre, hoisting, promis
+asunc js sync js
