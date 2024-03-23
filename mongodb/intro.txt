@@ -3,3 +3,11 @@ MongoDB is a most used cross-platform, document oriented database that provides,
 db.user.find()--- it will get all documents from that collection 
 
 await User.find({ email: email }, { name: 1, phone: 1
+
+
+
+
+show dbs;
+use db
+show collections
+db.collection.find({})
