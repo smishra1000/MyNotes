@@ -1,3 +1,6 @@
 js
 topics - clousre, hoisting, promis
 asunc js sync js
+
+
+promise- pending success failure
