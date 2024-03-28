@@ -1,0 +1,7 @@
+Objects are same as variables in JavaScript, the only difference is that an object holds multiple values in terms of properties and methods.
+
+Create Object using Object Literal Syntax
+The object literal is a short form of creating an object. Define an object in the { } brackets with key:value pairs separated by a comma. The key would be the name of the property and the value will
+be a literal value or a function.
+var <object-name> = { key1: value1, key2: value2,...};
+var person = { firstName: "samer" };
