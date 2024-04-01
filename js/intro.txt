@@ -4,3 +4,9 @@ asunc js sync js
 
 
 promise- pending success failure
+
+hows many way we can create onjects
+1) onject literal
+2) constructor function
+3) object create
+4) object assign 
