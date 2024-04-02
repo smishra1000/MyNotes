@@ -1,0 +1,193 @@
+Object Oriented Programming is a commonly used software design pattern and 
+is a very popular paradigm of programming. It’s used to structure code in 
+such a way that code is reusable, easily readable, and scalable. It involves
+ the use of classes and objects and almost all programming languages support 
+ this pattern.
+
+ Classes and Objects:
+
+A class is a blueprint with which objects/variables are created. It is a 
+custom data type containing properties and methods. An object is an instance 
+of a class that uses the class’s methods and properties. Let’s understand and 
+implement this via javascript:
+
+class Animal{
+    constructor(name){
+        this.name = name;
+    }
+}
+// Let's create Object from the class Animal
+var animal = new Animal("Dog");
+
+A constructor is a special keyword reserved to create a constructor function.
+ A constructor function is always called automatically upon the creation of an 
+ object/instance of a class. It implicitly returns an instance of the newly 
+ created object. A default constructor is built-in to the class and we override 
+ it by implementing our own. The new keyword is necessary to use with object 
+ creation as it will tell the compiler to invoke the constructor function.
+
+In Javascript, we can create Objects using functions without the use of the 
+class keyword.
+
+function Animal(name){
+    this.name = name;
+}
+var animal = new Animal("Dog");
+
+
+
+ENCAPSULATION--------------------------
+Encapsulation:
+
+Encapsulation is the process of hiding and securing the properties of objects. 
+Direct access to encapsulated properties is not possible and we have to provide 
+other mechanisms to operate/read that data. Typically, this is done by making 
+class variable properties private and providing public class methods to access
+ necessary data.
+class Animal{
+    #name;
+    constructor(name){
+        this.#name = name;
+    }
+    
+    setName(val){
+        this.#name = val;
+    }
+    
+    getName(){
+        return this.#name;
+    }
+}
+var animal = new Animal("DOG");
+animal.setName("CAT");
+console.log(animal.getName());    output: CAT
+console.log(animal.name);         output: undefined
+
+
+
+Abstraction:
+
+Abstraction means hiding the implementation details and showing only behavior
+
+class Employee{
+    #name;
+    #baseSalary;
+    
+    
+    setName(val){
+        this.#name = val;
+    }
+    setBaseSalary(val){
+        this.#baseSalary = val;
+    }
+    
+    getName(){
+        return this.#name;
+    }
+    
+    getSalary(){
+        let bonus = 1000;
+        return this.#baseSalary + bonus;
+    }
+}
+var emp = new Employee();
+emp.setName("abc");
+emp.setBaseSalary(100);
+console.log(emp.getName());
+console.log(emp.getSalary());
+
+Inheritance:
+
+Inheritance is an important concept in Object Oriented Programming paradigm.
+ It’s a process by which child objects inherit the properties of the parent 
+ object
+
+ class Person{
+    constructor(name){
+        this.name = name;
+    }
+    sayName(){
+        console.log(this.name);
+    }
+}
+class Student extends Person{
+    constructor(name, rollNumber){
+        super(name);
+        this.rollNumber = rollNumber;
+    }
+    logDetails(){
+        console.log(`Name: ${this.name}, Roll number: ${this.rollNumber}`)
+    }
+}
+var student = new Student("Heisenberg", 1);
+student.logDetails();    // Name: Heisenberg, Roll number:1
+student.sayName();       // Heisenberg
+
+
+
+
+Polymorphsim
+
+Polymorphism is the practice to design objects in such a way that they share 
+and override behavior from parent objects.
+
+When a property is referred to by an object whether it’s a method or variable, 
+the object first looks for it in its own scope, if not found then go one level 
+above and look for it in the parent scope
+
+class Person{
+    constructor(name){
+        this.name = name;
+    }
+    sayName(){
+        console.log(this.name);
+    }
+}
+class Student extends Person{
+    constructor(name, rollNumber){
+        super(name);
+        this.rollNumber = rollNumber;
+    }
+    logDetails(){
+        console.log(`Name: ${this.name}, Roll number: ${this.rollNumber}`)
+    }
+    sayName(){
+        // do stuff
+        console.log("From Student");
+        super.sayName();
+    }
+}
+var student = new Student("Heisenberg", 1);
+student.logDetails();
+student.sayName();      // From Student   Heisenberg
+
+
+
+Static class methods are defined on the class itself.
+
+You cannot call a static method on an object, only on an object class.
+class Car {
+  constructor(name) {
+    this.name = name;
+  }
+  static hello(x) {
+    return "Hello " + x.name;
+  }
+}
+const myCar = new Car("Ford");
+console.log(Car.hello(myCar));
+
+class Example {
+    static staticVariable = 'GeeksforGeeks';
+ 
+    //static variable defined
+    static staticMethod() {
+        return 'static method has been called.';
+    }
+}
+// static variable called
+console.log(Example.staticVariable);
+// static method called
+console.log(Example.staticMethod());
+
+https://dev.to/orighoprecious/object-oriented-programming-in-javascript-es5-es6-explained-4jbk
