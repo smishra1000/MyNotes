@@ -1,0 +1,35 @@
+JavaScript is a prototype based language, so, whenever we create a function
+ using JavaScript, JavaScript engine adds a prototype property inside a
+  function, Prototype property is basically an object (also known as Prototype 
+  object), where we can attach methods and properties in a prototype object,
+   which enables all the other objects to inherit these methods and properties.
+
+   // function constructor 
+function Person(name, job, yearOfBirth){    
+    this.name= name; 
+    this.job= job; 
+    this.yearOfBirth= yearOfBirth; 
+} 
+// this will show Person's prototype property. 
+console.log(Person.prototype); 
+ Person has a prototype property and that prototype property has a 
+ constructor object which again points to 
+ the Person constructor function.
+
+ When we create an object using the above function constructor, JavaScript
+  Engine will add dunder proto or __proto__ in the object which will point 
+  to the prototype’s constructor object.
+
+  // function constructor 
+function Person(name, job, yearOfBirth){    
+    this.name= name; 
+    this.job= job; 
+    this.yearOfBirth= yearOfBirth; 
+} 
+Person.prototype.calculateAge= function(){ 
+    console.log('The current age is: '+(2019- this.yearOfBirth)); 
+} 
+console.log(Person.prototype); 
+
+When a certain method(or property) is called, it first checks inside the 
+object but when it doesn’t find, then search moves on Object’s prototype.

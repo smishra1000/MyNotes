@@ -1,0 +1,511 @@
+What is GraphQL?
+GraphQL is an open-source data query language for APIs and It is a server-side 
+runtime for executing the query. The server’s GraphQL runtime takes care of 
+executing the query and ensuring that the right data is fetched and sent back.
+
+It is an alternative to REST, where clients make multiple requests to different
+ endpoints to get the data they require but in GraphQL clients can request
+  exactly the data they need in a single query.
+
+Key Components of GraphQL
+For Better Understanding of GraphQL, let’s see some key components of GraphQL which are as follows:
+1. Schema
+It defines the data types that can be queried and their relationships. 
+GraphQl uses it’s own language that is Schema Definition Language (SDL) for 
+writing the schema. It is human readable language and It does not depends 
+upon any specific language or framework. Schemas has two main types:
+
+Queries (for retrieving data)
+Mutations (for modifying data).
+2. Types
+GraphQL defines custom types to define the structure of data. There are 
+two main types of Type:
+
+Scalar Types: It represent values like integers, strings, booleans, and floats.
+Object Types: It represent complex objects with fields. 
+Fields can be scalars or other object types. For example, 
+A “User” object type with fields like “id“, “name“, and “email“.
+
+3. Queries
+It is used to retrieve data from a GraphQL server. It specify what 
+type of data we want to retrieve from fields of which types. It is similar to
+ GET requests in REST APIs but allow to request exactly the data we need. 
+ It is reducing over-fetching or under-fetching.
+
+4. Mutations
+It is used to modify data on the server. It can be used for creating, 
+updating, or deleting data. Mutations are similar to POST, PUT, or DELETE 
+requests in REST APIs.
+
+
+GraphQL basic Schema Design
+let’s take an example to understand the basics of graphQL Schema design
+
+type Book {
+
+  id: ID!
+
+  title: String!
+
+  author: String!
+
+}
+
+type Query {
+
+  books: [Book!]!
+
+  book(id: ID!): Book
+
+}
+
+type Mutation {
+
+  createBook(title: String!, author: String!): Book
+
+  updateBook(id: ID!, title: String, author: String): Book
+
+  deleteBook(id: ID!): Boolean
+
+}
+
+We have defined three main types:
+
+Book
+Query
+Mutation
+Book Type:
+
+The Book type represents a book object with three fields:
+
+id: An ID field, which is non-nullable (! indicates that it cannot be null).
+title: A String field, which is non-nullable.
+author: A String field, which is non-nullable.
+Query Type:
+
+It defines two query fields:
+
+books: Returns a list of Book objects, ! indicates a non-null list of non-null Book objects.
+book(id: ID!): Takes an id argument and returns a single Book object.
+
+Mutation Type:
+It defines three mutation fields:
+createBook: Creates a new book with title and author arguments and returns a Book.
+updateBook: Updates an existing book with id, title, and author arguments and returns a Book.
+deleteBook: Deletes a book with the given id and returns a Boolean indicating success.
+
+-------------------------------------------------------------
+in Nodejs side 
+1> install express-graphql,graphql,cors,express package 
+2>build schema uisng buildSchema add type of data like 
+
+const express = require("express");
+const {graphqlHTTP } = require("express-graphql")
+const mongoose = require("mongoose");
+const {buildSchema} = require("graphql")
+const cors = require("cors");
+const app = express();
+app.use(cors())
+
+// graphql schema setup 
+
+const schema = buildSchema(`
+type Blog {
+    id:ID
+    title: String
+    description: String
+    author: String
+    category: String
+}
+input BlogInput {
+    title: String
+    description: String
+    author: String
+    category: String
+}
+
+type Query {
+    getAllBlogs:[Blog]
+    getBlogById(id:ID): Blog
+}
+
+type Mutation {
+    addBlog(input: BlogInput) : Blog
+    deleteBlog(id:ID): String
+}
+`
+)
+// initial data fo blogs
+const blogs = [
+    // {
+    //     id:1,
+    //     title:"MERN SATCK ",
+    //     description:"MERN stak is full stack tech satck mongo node react ",
+    //     author:"sameer",
+    //     category:"software eng"
+    // },
+    // {
+    //     id:2,
+    //     title:"MEAN SATCK ",
+    //     description:"ABOUT MEAN STACK ",
+    //     author:"ROHIT",
+    //     category:"software eng"
+    // }
+]
+const root = {
+    getBlogById:({id})=>{
+        return blogs.find((item)=>Number(item.id)===Number(id))
+    },
+    getAllBlogs:()=>blogs,
+    //https://stackoverflow.com/questions/58780466/how-to-solve-mutation-returning-data-null
+    addBlog:({input})=>{
+        console.log(input)
+       const newBlog = {id:String(blogs.length+1),...input};
+       blogs.push(newBlog)
+       return newBlog
+    },
+    deleteBlog : ({id})=>{
+        const foundBlogIndex = blogs.findIndex((item)=>{
+            return Number(item.id)===Number(id)
+        })
+        blogs.splice(foundBlogIndex,1)
+        return "blog deleted successfully"
+    },
+}
+
+app.use("/graphql",graphqlHTTP({schema,rootValue:root,graphiql: true,}))
+
+app.get("/allblogsbyrestapi",function(req,res){
+    res.send(blogs)
+})
+
+/// server listen code
+app.listen(3001,()=>{
+    console.log("running server with graphql")
+})
+
+
+
+-----------------------------React js graphql ------------------
+
+Apollo Client is a comprehensive state management library for JavaScript that enables 
+you to manage both local and remote data with GraphQL.
+Applications that use Apollo Client need two dependencies: @apollo/client and 
+graphql,graphql-tag
+$ npm install @apollo/client graphql, graphql-tag
+
+2> create ApploProvide file  src/ApploProvider.js
+import React from "react";
+import { ApolloClient, InMemoryCache, ApolloProvider, gql } from '@apollo/client';
+
+const client = new ApolloClient({
+    uri:'http://localhost:3001/graphql',
+    cache: new InMemoryCache(),
+})
+
+const ApolloWrapper = ({children})=>{
+    return <ApolloProvider client={client}>{children}</ApolloProvider>
+}
+
+export default ApolloWrapper
+
+2>inside index.js file wrap 
+import ApolloWrapper from './ApolloProvider';
+<ApolloWrapper>
+    <App />
+    </ApolloWrapper>
+
+
+3> create Component BlogList.js 
+
+import React, {useState,useEffect} from "react"
+
+import { useMutation, useQuery } from "@apollo/client"
+import { gql } from "graphql-tag"
+import { useNavigate } from "react-router-dom"
+
+
+const GET_BLOGS = gql`
+query {
+    getAllBlogs {
+        id
+        title
+        description,
+        author,
+        category
+    }
+}
+`
+
+const DELETE_BLOG = gql`
+mutation DeleteBlog($id:ID!){
+    deleteBlog(id:$id)
+}
+`
+
+const BlogList = () => {
+    const navigate = useNavigate();
+// const [blogs,setBlogs] = useState([])
+
+// useEffect(()=>{
+//     fetch("http://localhost:3001/allblogsbyrestapi").then(function(res){
+//         return res.json()
+//     }).then(function(result){
+//         console.log(result)
+//         setBlogs(result)
+//     })
+// },[])
+
+    const { loading, error, data } = useQuery(GET_BLOGS)
+    const [deleteBlog] = useMutation(DELETE_BLOG)
+    if (loading) return <h1>Data Loading ...</h1>
+    if (error) return <h1>Some thing wrong</h1>
+    const goToBlogDetail = (id)=>{
+        navigate("/blog/"+id)
+    }
+    const handleDelte = async (e,id)=>{
+        e.stopPropagation();
+        const {data} = await deleteBlog({variables: {id:Number(id)}})
+
+    }
+    return (
+        <div style={{display:'flex',flexDirection:'row',gap:'10px'}}>
+            {data.getAllBlogs.length===0 &&<h1>No Blogs </h1>}
+                {data.getAllBlogs.map((item) => {
+                    return (
+                        <div style={{width:'200px',height:'200px',border:'2px solid #ddd',boxShadow:'2px 2px #ddd'}} onClick={()=>goToBlogDetail(item.id)}>
+                            <h4>Title{item.title}</h4>
+                            <h4>Description:{item.description}</h4>
+                            <h4>author:{item.author}</h4>
+                            <button onClick={(e)=>handleDelte(e,item.id)}>delete blog</button>
+                        </div>
+
+                    )
+                })}
+        </div>
+    )
+}
+
+export default BlogList
+
+
+4> import { useState } from "react"
+import BlogList from "./BlogList";
+import { useMutation } from "@apollo/client"
+import { gql } from "graphql-tag"
+import { useNavigate } from "react-router-dom";
+const ADD_BLOGS = gql`
+mutation AddBlog($input:BlogInput!){
+    addBlog(input:$input){
+        title
+        description
+        author
+        category
+    }
+}
+`
+function AddBlog(){
+const [formData,setFormData] = useState({title:"",description:"",author:"",category:""})
+const [addBlog, {loading,error}] = useMutation(ADD_BLOGS)
+const navigate = useNavigate();
+
+const handleChange = (e)=>{
+    setFormData({...formData,[e.target.name]:e.target.value})
+}
+
+const saveBlog = async(e)=>{
+    const {data} = await addBlog({variables:{input:formData}})
+    console.log(data)
+    resetFormData()
+}
+
+const resetFormData = ()=>{
+    setFormData({title:"",description:"",author:"",category:""})
+    navigate("/allblogs")
+}
+
+    return(
+        <div>
+            <h1>Blog create form</h1>
+            <label>Title</label>
+            <input type="text" name="title" value={formData.title} placeholder="enter title" onChange={(e)=>handleChange(e)}/>
+            <label>Description</label>
+            <input type="text" name="description" value={formData.description} placeholder="enter title" onChange={(e)=>handleChange(e)}/>
+            <label>Author</label>
+            <input type="text" name="author" value={formData.author} placeholder="enter title" onChange={(e)=>handleChange(e)}/>
+            <label>Catgory</label>
+            <input type="text" name="category" value={formData.catgory} placeholder="enter title" onChange={(e)=>handleChange(e)}/>
+            <button onClick={(e)=>saveBlog(e)}>Save</button>
+            
+        </div>
+    )
+}
+
+export default AddBlog
+
+5> import { useParams } from "react-router-dom"
+import { useQuery } from "@apollo/client"
+import { gql } from "graphql-tag"
+
+const GET_BLOG_BY_ID = gql`
+query GetBlogById($id:ID!){
+    getBlogById(id:$id){
+        id
+        title
+        description
+        category
+        author
+        __typename
+    }
+}
+`
+function BlogDetail(){
+    const {id} = useParams();
+
+const {loading,error,data} = useQuery(GET_BLOG_BY_ID, {variables:{id:Number(id)}})
+const blog = data.getBlogById;
+    return(
+        <div>
+            <h1>Blog detail</h1>
+                <div>
+                    <h4>Blog title:{blog.title}</h4>
+                    <h4>Blog author:{blog.author}</h4>
+                    <h4>Blog description:{blog.description}</h4>
+                     <h4>Blog category:{blog.category}</h4>
+                </div>
+        </div>
+    )
+}
+
+export default BlogDetail
+
+
+
+----------------------------------Complete code with Mongoose model and Database 
+
+const express = require("express");
+const { graphqlHTTP } = require("express-graphql");
+const mongoose = require("mongoose");
+const { buildSchema } = require("graphql");
+const cors = require("cors");
+
+const app = express();
+app.use(cors());
+
+// Mongoose setup
+mongoose.connect("mongodb://localhost:27017/graphql_blog", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+const db = mongoose.connection;
+
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
+db.once("open", function () {
+  console.log("Connected to MongoDB");
+});
+
+// Define Mongoose schema and model
+const blogSchema = new mongoose.Schema({
+  title: String,
+  description: String,
+  author: String,
+  category: String,
+});
+
+const BlogModel = mongoose.model("Blog", blogSchema);
+
+// GraphQL schema setup
+const schema = buildSchema(`
+  type Blog {
+    id: ID
+    title: String
+    description: String
+    author: String
+    category: String
+  }
+
+  input BlogInput {
+    title: String
+    description: String
+    author: String
+    category: String
+  }
+
+  type Query {
+    getAllBlogs: [Blog]
+    getBlogById(id: ID): Blog
+  }
+
+  type Mutation {
+    addBlog(input: BlogInput): Blog
+    deleteBlog(id: ID): String
+  }
+`);
+
+// Resolver functions
+const root = {
+  getAllBlogs: async () => {
+    try {
+      const blogs = await BlogModel.find();
+      return blogs;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  },
+  getBlogById: async ({ id }) => {
+    try {
+      const blog = await BlogModel.findById(id);
+      return blog;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  },
+  addBlog: async ({ input }) => {
+    try {
+      const newBlog = await BlogModel.create(input);
+      return newBlog;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  },
+  deleteBlog: async ({ id }) => {
+    try {
+      await BlogModel.findByIdAndDelete(id);
+      return "Blog deleted successfully";
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  },
+};
+
+// GraphQL endpoint
+app.use(
+  "/graphql",
+  graphqlHTTP({
+    schema,
+    rootValue: root,
+    graphiql: true,
+  })
+);
+
+// REST API endpoint
+app.get("/allblogsbyrestapi", async (req, res) => {
+  try {
+    const blogs = await BlogModel.find();
+    res.json(blogs);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// Server listening
+app.listen(3001, () => {
+  console.log("Server running with GraphQL");
+});
+
+
