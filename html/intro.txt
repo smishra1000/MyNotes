@@ -1,6 +1,26 @@
-html is hypertext markup language 
-it use to describe the web page structure of page web
+HTML stands for HyperText Markup Language. HTML is the basic building block
+ of World Wide Web.
+ It is the standard language used to create and design web pages on the internet
+ Hypertext is text displayed on a computer or other electronic device with references to other text
 
-block level element and inline elements
+ Basic Structure of html
+    <!DOCTYPE html> 
+    <html> 
+    <head> 
+        <title>HTML Tutorial</title> 
+    </head> 
+    <body> 
+        <h2>Welcome To GFG</h2> 
+        <p>Hello World! I Don't Give a Bug </p> 
+    </body> 
+    </html>
 
-Box model box sizing
+
+!DOCTYPE html: Defines this document to be HTML5
+html: The root element of an HTML page
+head: The element contains meta information about the document
+The <head> and </head> tags contains information about the web site, for  example: style, meta-tags, scripts, etc…
+title: The element specifies a title for the document
+body: The element contains the visible page content
+h1: The element defines a large heading
+p: The element defines a paragraph

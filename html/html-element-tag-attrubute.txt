@@ -1,0 +1,54 @@
+HTML ELEMENT---------
+HTML is written in the form of HTML elements consisting of markup tags. 
+These markup tags are the fundamental characteristic of HTML. Every markup 
+tag is composed of a keyword, surrounded by angle brackets, such as <html>, 
+<head>, <body>, <title>, <p>
+
+HTML TAG------------
+HTML tags normally come in pairs like <html> and </html>. The first tag in
+ a pair is often called the opening tag (or start tag), and the second tag is
+  called the closing tag (or end tag).
+
+  Most HTML elements are written with a start tag (or opening tag) and an end 
+  tag (or closing tag), with content in between. Elements can also contain 
+  attributes that define its additional properties
+
+  ex- <p>This is a paragraph.</p>
+
+HTML Attributes
+Attributes define additional characteristics or properties of the element 
+such as width and height of an image. Attributes are always specified in the
+ start tag (or opening tag)
+ex- <input type="text" value="sameer">
+Note----here are several attributes in HTML5 that do not consist of name/value
+ pairs but consist of just a name. Such attributes are called Boolean attributes
+ <input type="email" required>
+<input type="submit" value="Submit" disabled>
+HTML Elements Types
+Elements can be placed in two distinct groups: block level and inline level elements
+
+block element occupies 100% of the available width and it is rendered with a line
+ break before and after. Whereas,
+  an inline element will take up only as much space as it needs.
+
+The most commonly used block-level elements are <div>, <p>, <h1> through <h6>, 
+<form>, <ol>, <ul>, <li>, and so on.
+inline-level elements are <img>, <a>, <span>, <strong>, <b>, <em>, <i>, <code>,
+ <input>, <button>, etc
+
+
+The id Attribute
+The id attribute is used to give a unique name or identifier to an element within
+ a document. This makes it easier to select the element using CSS or JavaScript.
+ <input type="text" id="firstName">
+
+ The class Attribute
+Like id attribute, the class attribute is also used to identify elements. 
+But unlike id, the class attribute does not have to be unique in the document.
+ This means you can apply the same class to multiple elements in a document
+ <div class="box highlight">Some content</div>
+
+The style Attribute
+The style attribute allows you to specify CSS styling rules such as color, 
+font, border, etc. directly within the element.
+<p style="color: blue;">This is a paragraph.</p>

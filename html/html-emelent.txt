@@ -1,0 +1,25 @@
+HTML HEADING h1-h6
+HTML offers six levels of heading tags, <h1> through <h6>; the lower the
+ heading level number, the greater its importance — therefore <h1> tag defines 
+ the most important heading, whereas the <h6> tag defines the least important 
+ heading in the document.
+ <h1>Heading level 1</h1>
+<h2>Heading level 2</h2>
+<h3>Heading level 3</h3>
+<h4>Heading level 4</h4>
+<h5>Heading level 5</h5>
+<h6>Heading level 6</h6>
+
+Paragraph
+Paragraph element is used to publish text on the web pages.
+<p>This is a paragraph.</p>
+
+The <br> tag is used to insert a line break on the web page.
+
+Creating Horizontal Rules
+<hr> tag to create horizontal rules or lines to visually separate content 
+sections on a web page. Like <br>, the <hr> tag is also an empty element
+example---
+<p>This is a paragraph.</p>
+<hr>
+<p>This is another paragraph.</p>
