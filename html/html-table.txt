@@ -1,0 +1,93 @@
+What is HTML Tables?
+An HTML Table is an arrangement of data in rows and columns in tabular format
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+
+<body>
+    <table>
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Age</th>
+        </tr>
+        <tr>
+            <td>Priya</td>
+            <td>Sharma</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>Arun</td>
+            <td>Singh</td>
+            <td>32</td>
+        </tr>
+        <tr>
+            <td>Sam</td>
+            <td>Watson</td>
+            <td>41</td>
+        </tr>
+    </table>
+</body>
+
+</html>
+Table Headers
+The Headers are generally use to provide the Heading. The Table Headers can 
+also be used to add the heading to the Table. This contains the <th> & </th> tags.
+
+Table Rows
+The rows can be formed with the help of combination of Table Cells. It is denoted by <tr> and </tr> tag as a start & end tags.
+Table cells
+It is denoted with <td> as a start tag & </td> as a end tag.
+
+Row span col span table-----------------
+In HTML, the rowspan attribute specifies how many rows a table cell should span,
+ determining its vertical position. On the other hand, the colspan attribute 
+ specifies the number of columns a cell should span, determining its horizontal 
+ position.
+ example--
+ <table> 
+        <thead> 
+            <tr> 
+                <th colspan="2">Name</th> 
+                <th>Class</th> 
+            </tr> 
+        </thead> 
+        <tbody> 
+            <tr> 
+                <td>Mahima</td> 
+                <td>Gupta</td> 
+                <td>1</td> 
+            </tr> 
+            <tr> 
+                <td>Sri</td> 
+                <td>Krishn</td> 
+                <td>3</td> 
+            </tr> 
+            <tr> 
+                <td>Shivika</td> 
+                <td>Goyal</td> 
+                <td>5</td> 
+            </tr> 
+        </tbody> 
+    </table> 
+
+HTML Table with Rowspan
+The HTML attribute rowspan determines how many rows a specific cell in a table
+ should cover. When a cell spans multiple rows, it occupies the space of those 
+ rows within the table.    
+
+ <table> 
+        <tr> 
+            <th>Name</th> 
+            <th>Class</th> 
+            <th rowspan="3">MVM School</th> 
+        </tr> 
+        <tr> 
+            <td>Radha</td> 
+            <td>10</td> 
+        </tr> 
+        <tr> 
+            <td>Ankur</td> 
+            <td>11</td> 
+        </tr> 
+    </table> 

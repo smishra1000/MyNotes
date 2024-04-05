@@ -1,0 +1,33 @@
+A link or hyperlink is a connection from one web resource to another. 
+Links allow users to move seamlessly from one page to another
+
+HTML Link Syntax
+Links are specified in HTML using the <a> tag.
+
+A link or hyperlink could be a word, group of words, or image.
+
+<a href="url">Link text</a>
+
+You can also create bookmark anchors to allow users to jump to a specific section
+ of a web page. Bookmarks are especially helpful if you have a very long web page.
+
+Setting the Targets for Links----------------------------------
+The target attribute tells the browser where to open the linked document. 
+There are four defined targets, and each target name starts with an 
+underscore(_) character:
+
+_blank — Opens the linked document in a new window or tab.
+_parent — Opens the linked document in the parent window.
+_self — Opens the linked document in the same window or tab as the source document. This is the default, hence it is not necessary to explicitly specify this value.
+_top — Opens the linked document in the full browser window.
+
+
+Creating Bookmark Anchors----------------
+Creating bookmarks is a two-step process: first add the id attribute on the 
+element where you want to jump, then use that id attribute value preceded by 
+the hash sign (#) as the value of the href attribute of the <a> tag, as shown 
+in the following example:
+
+<a href="#sectionA">Jump to Section A</a>
+<h2 id="sectionA">Section A</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>

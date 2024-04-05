@@ -1,0 +1,3 @@
+What is iframe
+An iframe or inline frame is used to display external objects including other web pages within a web page
+<iframe src="hello.html" width="400" height="200"></iframe>

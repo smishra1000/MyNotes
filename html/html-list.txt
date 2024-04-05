@@ -1,0 +1,60 @@
+HTML LIST
+
+
+Unordered list — Used to create a list of related items, in no particular order.
+Ordered list — Used to create a list of related items, in a specific order.
+Description list — Used to create a list of terms and their descriptions.
+
+
+The unordered list items are marked with bullets. It is also known as bulleted
+ lists. An unordered list starts with the <ul> tag. Each list item starts 
+ with the <li> tag. 
+ Attribute: This tag contains two attributes which are listed below: 
+    compact: It will render the list smaller.
+    type: It specifies which kind of marker is used in the list.
+
+
+<h5>List of available courses</h5>
+    <ul>
+        <li>Data Structures & Algorithm</li>
+        <li>Web Technology</li>
+        <li>Aptitude & Logical Reasoning</li>
+        <li>Programming Languages</li>
+    </ul>
+
+In an ordered list, all list items are marked with numbers by default. 
+An ordered list starts with the <ol> tag. Each list item starts with the “li” tag.     
+
+Attributes:
+
+compact: It defines the list should be compacted (compact attribute is not 
+supported in HTML5. Use CSS instead.).
+reversed: It defines that the order will be descending.
+start: It defines from which number or alphabet the order will start.
+type: It defines which type(1, A, a, I, and i) of the order you want in your 
+list of numeric, alphabetic, or roman numbers.
+
+
+<h5>Data Structures topics</h5>
+<ol>
+        <li>Array</li>
+        <li>Linked List</li>
+        <li>Stacks</li>
+        <li>Queues</li>
+        <li>Trees</li>
+        <li>Graphs</li>
+</ol>
+
+<dl> 
+        <dt>Coffee</dt>
+        <dd>- 500 gms</dd>
+        <dt>Milk</dt>
+        <dd>- 1 ltr Tetra Pack</dd>
+</dl>   
+
+<ul>	Defines an unordered list
+<ol>	Defines an ordered list
+<li>	Defines a list item
+<dl>	Defines a description list
+<dt>	Defines a term in a description list
+<dd>	Details the term in a description list

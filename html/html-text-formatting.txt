@@ -1,0 +1,16 @@
+HTML Text Formatting
+HTML provides several tags that you can use to make some text on your web 
+pages to appear differently than normal text, for example, you can use the 
+tag <b> to make the text bold, tag <i> to make the text italic, tag <mark> 
+to highlight the text
+
+<p>This is <b>bold text</b>.</p>
+<p>This is <strong>strongly important text</strong>.</p>
+<p>This is <i>italic text</i>.</p>
+<p>This is <em>emphasized text</em>.</p>
+<p>This is <mark>highlighted text</mark>.</p>
+<p>This is <code>computer code</code>.</p>
+<p>This is <small>smaller text</small>.</p>
+<p>This is <sub>subscript</sub> and <sup>superscript</sup> text.</p>
+<p>This is <del>deleted text</del>.</p>
+<p>This is <ins>inserted text</ins>.</p>

@@ -1,0 +1,2 @@
+What is Canvas?
+The HTML5 canvas element can be used to draw graphics on the webpage via JavaScript

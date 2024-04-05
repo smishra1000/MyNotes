@@ -1,0 +1,26 @@
+In HTML5 there are two types of web storage API.
+With web storage, web applications can store data locally within the user's 
+browser.
+
+localStorage
+SessionStorage
+localStorage: It is used to store data on the client side. It has no
+ expiration time, so the data in the LocalStorage exists always till the user
+  manually deletes it.
+  localStorage.setItem("name", name);
+
+Local storage has 4 methods:
+
+setItem() Method – This method takes two parameters one is key and another one is value. It is used to store the value in a particular location with the name of the key.
+localStorage.setItem(key, value)
+getItem() Method – This method takes one parameter that is key which is used to get the value stored with a particular key name.
+localStorage.getItem(key)
+removeItem() Method – This is method is used to remove the value stored in the memory in reference to key.
+localStorage.removeItem(key)
+clear() Method – This method is used to clear all the values stored in localstorage.
+localStorage.clear()
+
+
+  Session Storage: It is used to store data on the client-side. Data in the 
+  SessionStorage exist till the current tab is open, if we close the current 
+  tab then our data will also erase automatically from the SessionStorage.

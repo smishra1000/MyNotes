@@ -1,0 +1,39 @@
+SVG in HTML
+In this article, we will learn about HTML SVG. It stands for Scalable Vector
+ Graphics, based on the XML format used to describe vector graphics. 
+ SVG is popular and widely used due to its responsive web-design feature,
+  it ensures the clarity of the graphics on any device and dimensions without 
+  losing image quality. Another feature of SVG is you can easily integrate 
+  SVG in your HTML file with the help of <svg> element. With the help of 
+  JavaScript, we can manipulate SVG elements, and give dynamic effects.
+
+  <!DOCTYPE html> 
+<html lang="en"> 
+  
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" 
+          content="width=device-width, 
+                   initial-scale=1.0"> 
+    <title>SVG to HTML</title> 
+</head> 
+  
+<body> 
+    <div> 
+  
+        <p style="font-size: 20px;"> 
+            SVG in HTML 
+        </p> 
+        <svg width="200" 
+             height="200" 
+             style="border: 2px solid black;"> 
+            <line x1="20" 
+                  y1="20" 
+                  x2="150" 
+                  y2="150" 
+                  stroke="blue" /> 
+        </svg> 
+    </div> 
+</body> 
+  
+</html>
