@@ -1,0 +1,145 @@
+ Explain the differences between == and ===.
+🔍 What is event delegation, and how does it function in JavaScript?
+🔍 Can you provide an illustration of how ES6 has altered the approach to working with "this" in JavaScript?
+🔍 Explain the concept of prototypal inheritance.
+🔍 Differentiate between a variable that is null, undefined, or undeclared.
+🔍 Define what a closure is and describe its uses and advantages.
+🔍 Explain the primary distinction between the Array.forEach() loop and Array.map() method, as well as when to choose one over the other.
+🔍 What is a common scenario for employing anonymous functions?
+🔍 Distinguish between host objects and native objects.
+🔍Clarify the distinctions among 'function User(){}', 'var user = User()', and 'var user = new User()
+🔍 Can you elucidate the purposes of Function.call and Function.apply, along with their notable differences?
+🔍 Describe the Function.prototype.bind method.
+🔍 Explain the differences between feature detection, feature inference, and utilizing the User Agent (UA) string.
+🔍 Define the concept of "hoisting."
+🔍 What is type coercion, and what are some common pitfalls associated with relying on it in JavaScript code?
+🔍 Describe event bubbling and event capturing.
+🔍 What distinguishes an "attribute" from a "property"?
+🔍 List the advantages and disadvantages of extending built-in JavaScript objects.
+🔍 Discuss the same-origin policy's implications for JavaScript.
+🔍 Why is it referred to as a "Ternary operator," and what does the term "Ternary" signify?
+🔍 Define strict mode and outline some of its advantages and disadvantages.
+🔍 Analyze the pros and cons of writing JavaScript code in a language that compiles to JavaScript.
+🔍 What tools and techniques do you employ for debugging JavaScript code?
+🔍 Enumerate the benefits and drawbacks of immutability and explain how you can achieve it in your code.
+🔍 Differentiate between synchronous and asynchronous functions and elucidate the event loop.
+🔍 Explain the disparities between variables created using let, var, or const.
+🔍 Compare ES6 classes and ES5 function constructors, and furnish a use case for the arrow (=>) function syntax.
+🔍 Describe the advantages of using the arrow syntax for methods in constructors.
+🔍 Define a higher-order function and provide an example of object or array destructuring.
+🔍 Give an example of generating a string using ES6 Template Literals and explain their benefits.
+🔍 Provide an example of a curry function and clarify why this syntax can be advantageous.
+🔍 Discuss the benefits of using spread syntax and differentiate it from rest syntax.
+🔍 Explain how code sharing between files can be accomplished.
+🔍 Define what a promise is and describe its applications.
+
+
+1. Implement Debounce - 𝑬𝒂𝒔𝒚
+(Asked in IBM, Google, MakeMy Trip, Meta)
+
+2. Implement Throttle - 𝑴𝒆𝒅𝒊𝒖𝒎
+(Asked in Meta, Google, Tekion)
+
+3. Implement Currying - 𝑬𝒂𝒔𝒚
+(Asked in Intuit, Adobe, MakeMyTrip, Paytm, Target)
+
+4. Implement Currying with Placeholders - 𝑴𝒆𝒅𝒊𝒖𝒎
+(Asked in Amazon, Flipkart, Vimeo, Xiaomi, Target, MindTickle, Amadocs)
+
+5. Deep Flatten I - 𝑴𝒆𝒅𝒊𝒖𝒎
+(Asked in Disney+ Hotstar, Rippling, Roblox)
+
+6. Deep Flatten II - 𝑴𝒆𝒅𝒊𝒖𝒎
+(Asked in CoinSwitch)
+
+7. Deep Flatten III - 𝑬𝒂𝒔𝒚
+(Asked in Amadocs, Target, MindTickle, Flipkart)
+
+8. Deep Flatten IV - 𝐇𝐚𝐫𝐝
+(Asked in Google, Meta, Tik Tok, Flipkart, IBM, Amadocs, MindTickle)
+ 
+9. Negative Indexing in Arrays (Proxies) - 𝑴𝒆𝒅𝒊𝒖𝒎
+
+10. Implement a Pipe Method - 𝑬𝒂𝒔𝒚
+(Asked in Adobe)
+
+11. Implement Auto-retry Promises - 𝑴𝒆𝒅𝒊𝒖𝒎
+(Asked in Amazon, Flipkart, Paypal)
+
+12. Implement Promise.all - 𝑴𝒆𝒅𝒊𝒖𝒎
+(Asked in Lyft, Snapchat, Tik Tok)
+
+13. Implement Promise.allSettled - 𝑴𝒆𝒅𝒊𝒖𝒎
+(Asked in Adobe, Tekion)
+
+14. Implement Promise.any - 𝑴𝒆𝒅𝒊𝒖𝒎
+(Asked in Zepto)
+
+15. Implement Promise.race - 𝑬𝒂𝒔𝒚
+(Asked in Yandex)
+
+16. Implement Promise.finally - 𝑴𝒆𝒅𝒊𝒖𝒎
+(Asked in Google, Target)
+
+17. Implement Custom JavaScript Promises - 𝐒𝐔𝐏𝐄𝐑 𝐇𝐀𝐑𝐃
+(Asked in Airbnb, Tekion, Cars24)
+
+18. Throttling Promises by Batching - 𝑴𝒆𝒅𝒊𝒖𝒎
+
+19. Implement Custom Deep Equal - 𝐇𝐚𝐫𝐝
+(Asked in Tekion, Google)
+
+20. Implement Custom Object.assign - 𝑴𝒆𝒅𝒊𝒖𝒎
+(Asked in ServiceNow, Flipkart)
+
+21. Implement Custom JSON.stringify - 𝐇𝐚𝐫𝐝
+(Asked in Meta)
+
+22. Implement Custom JSON.parse - 𝐒𝐮𝐩𝐞𝐫 𝐇𝐚𝐫𝐝
+(Asked in Meta)
+
+23. Implement Custom typeof operator - 𝑴𝒆𝒅𝒊𝒖𝒎
+
+24. Implement Custom lodash_.get() - 𝑴𝒆𝒅𝒊𝒖𝒎
+(Asked in Tik Tok, Amazon, Quizizz, Mind Tickle)
+
+25. Implement Custom lodash_.set() - 𝑴𝒆𝒅𝒊𝒖𝒎
+
+26. Implement Custom lodash_omit() - 𝑴𝒆𝒅𝒊𝒖𝒎
+
+27. Implement Custom String Tokenizer - 𝑴𝒆𝒅𝒊𝒖𝒎
+
+28. Implement Custom setTimeout - 𝑴𝒆𝒅𝒊𝒖𝒎
+(Asked in Swiggy, Disney+ Hotstar)
+
+29. Implement Custom setInterval - 𝑴𝒆𝒅𝒊𝒖𝒎
+(Asked in Meta, Tik Tok, Swiggy)
+
+30. Implement Custom clearAllTimers - 𝑬𝒂𝒔𝒚
+(Asked in Meta)
+
+31. Implement Custom Event Emitter - 𝑴𝒆𝒅𝒊𝒖𝒎
+(Asked in Mela, Flipkart, Adobe, Jio, Tekion)
+
+32. Implement Custom Browser History - 𝑴𝒆𝒅𝒊𝒖𝒎
+
+33. Implement Custom lodash_chunk() - 𝑴𝒆𝒅𝒊𝒖𝒎
+
+34. Implement Custom Deep Clone - 𝑴𝒆𝒅𝒊𝒖𝒎
+(Asked in Adobe, Tekion, Navi)
+
+35. Promisify the Async Callbacks - 𝑬𝒂𝒔𝒚
+(Asked in Amazon)
+
+36. Implement 'N' async tasks in Series - 𝐇𝐚𝐫𝐝
+(Asked in Jio, MakeMyTrip, Tekion)
+
+37. Implement 'N' async tasks in Parallel - 𝑴𝒆𝒅𝒊𝒖𝒎
+(Asked in Zepto, Paytm, BookMyShow)
+
+38. Implement 'N' async tasks in Race - 𝑬𝒂𝒔𝒚
+
+39. Implement Custom Object.is() method - 𝑬𝒂𝒔𝒚
+
+40. Implement Custom lodash_.partial() - 𝑴𝒆𝒅𝒊𝒖𝒎
+(Asked in Meesho)
