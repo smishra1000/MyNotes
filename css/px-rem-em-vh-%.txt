@@ -1,0 +1,98 @@
+CSS units allow you to measure and specify different property values. 
+You use them to modify CSS properties such as margins, padding, height, 
+and width to make them compatible with devices of all screen sizes
+
+CSS units have two basic types:
+
+Absolute units
+Relative units
+
+
+Absolute Unit----------------------------------------------------------------------------
+Absolute units are fixed and do not depend on the size of the parent element or 
+the viewport. Examples of absolute units are pixels (px), points (pt), 
+and centimeters (cm).
+
+ex----
+Pixels (px)
+px is an absolute unit of measurement used to specify length and sizes.
+ px is a fixed unit 
+
+Relative Units----------------------------------------------------------------------------
+Relative units, on the other hand, are flexible – and just as the name implies, 
+they are relative to the parent element’s size, the viewport’s size, or the 
+root element’s font size.
+
+
+Rem (rem)
+The rem unit in CSS stands for "root em". It is a relative unit of
+ measurement that is relative to the font size of the root element.
+  One rem is equal to the font size of the root element. The root element 
+  defaults to 16px in many browsers, so 1rem is equal to 16px.
+
+Let's look at an example to see how you can use rem:
+
+    <div class="container">
+      <h1>Best Practices for CSS units</h1>
+      <p>This is a paragraph with font size set to 2rem</p>
+    </div>
+
+html {
+    font-size: 16px;
+}
+    h1 {
+    font-size: 2rem;
+    color: #0077cc;
+}
+The h1 element is set to 2rem which means that it's two times the root element, 
+the html element. 2 x 16px = 32, so the h1 element is 32px.
+
+
+Em (em)
+Similar to rem, em is a relative unit of measurement. But unlike rem, em 
+is relative to the font size of the parent element or the font-size of the
+ nearest parent with a defined font size.
+
+ The p element is set to 2em which means it is 2 times the font size of the 
+ parent element. 2 x 20 is 40px so the p element is 40px.
+
+
+Percentages (%)
+    Percentages are relative units that render an element relative to the size
+    of the element's parent. They serve as a percentage of their containing 
+    block and are always relative to their nearest parent.
+
+Viewport height (vh)
+    vh is a relative unit of measurement that represents the visible height
+    area of the browser window.
+
+
+
+What are Absolute Units?
+
+Absolute units specify a fixed length value. It doesn't matter if the screen's 
+width or height changes, the value will remain fixed.
+Units that fall under this category include:
+mm (millimeters)
+cm (centimeters): 10mm makes 1cm
+in (inches): 2.54cm makes 1in
+pt (points): 1/72in makes 1pt
+pc (picas) – 12pt makes 1pc
+px (pixel)– 0.75pt makes 1px
+
+For high-resolution media like print documents, it is recommended 
+that you use cm, mm, or pt. For webpages, px is the recommended unit.
+
+
+What are Relative Units?
+Unlike absolute units, relative units are not fixed. Their values are 
+"relative" to another value. This means that when that other value changes,
+ the relative unit value will also change.
+
+Units that fall under this category include:
+% (percentage): relative to the size of the parent element
+em (font size): relative to the size of the font
+rem (root em): relative to the font size of the root element
+vw (viewport width): relative to the width of the viewport
+vh (viewport height): relative to the height of the viewport
+
