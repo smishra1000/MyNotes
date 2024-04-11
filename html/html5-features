@@ -1,1 +1,39 @@
 
+It has introduced new multimedia features which supports both audio and video controls by using <audio> and <video> tags.
+There are new graphics elements including vector graphics and tags.
+Enrich semantic content by including <header> <footer>, <article>, <section> and <figure> are added.
+Drag and Drop- The user can grab an object and drag it further dropping it to a new location.
+Geo-location services- It helps to locate the geographical location of a client.
+Web storage facility which provides web application methods to store data on the web browser.
+Uses SQL database to store data offline.
+Allows drawing various shapes like triangle, rectangle, circle, etc.
+Capable of handling incorrect syntax.
+Easy DOCTYPE declaration i.e., <!doctype html>
+Easy character encoding i.e., <meta charset=”UTF-8″>
+
+<article>: The <article> tag is used to represent an article. More specifically, the content within the <article> tag is independent from the other content of the site (even though it can be related).
+<aside>: The <aside> tag is used to describe the main object of the web page in a shorter way like a highlighter. It basically identifies the content that is related to the primary content of the web page but does not constitute the main intent of the primary page. The <aside> tag contains mainly author information, links, related content and so on.
+<figcaption>: The <figcaption> tag in HTML is used to set a caption to the figure element in a document.
+<figure>: The <figure> tag in HTML is used to add self-contained content like illustrations, diagrams, photos or codes listing in a document. It is related to main flow, but it can be used in any position of a document and the figure goes with the flow of the document and if it is removed it should not affect the flow of the document.
+<header>: It contains the section heading as well as other content, such as a navigation links, table of contents, etc.
+<footer>: The <footer> tag in HTML is used to define a footer of HTML document. This section contains the footer information (author information, copyright information, carriers etc.). The footer tag is used within body tag. The <footer> tag is new in the HTML 5. The footer elements require a start tag as well as an end tag.
+<main>: Delineates the main content of the body of a document or web app.
+<mark>: The <mark> tag in HTML is used to define the marked text. It is used to highlight the part of the text in the paragraph.
+<nav>: The <nav> tag is used to declaring the navigational section in HTML documents. Websites typically have sections dedicated to navigational links, which enables user to navigate the site. These links can be placed inside a nav tag.
+<section>: It demarcates a thematic grouping of content.
+<details>: The <details> tag is used for the content/information which is initially hidden but could be displayed if the user wishes to see it. This tag is used to create interactive widget which user can open or close it. The content of details tag is visible when open the set attributes.
+<summary>: The <summary> tag in HTML is used to define a summary for the <details> element. The <summary> element is used along with the <details> element and provides a summary visible to the user. When the summary is clicked by the user, the content placed inside the <details> element becomes visible which was previously hidden. The <summary> tag was added in HTML 5. The <summary> tag requires both starting and ending tag.
+<time>: The <time> tag is used to display the human-readable data/time. It can also be used to encode dates and times in a machine-readable form. The main advantage for users is that they can offer to add birthday reminders or scheduled events in their calendars and search engines can produce smarter search results.
+<bdi>: The <bdi> tag refers to the Bi-Directional Isolation. It differentiates a text from other text that may be formatted in different direction. This tag is used when a user generated text with an unknown direction.
+<wbr>: The <wbr> tag in HTML stands for word break opportunity and is used to define the position within the text which is treated as a line break by the browser. It is mostly used when the used word is too long and there are chances that the browser may break lines at the wrong place for fitting the text.
+<datalist>: The <datalist> tag is used to provide autocomplete feature in the HTML files. It can be used with input tag, so that users can easily fill the data in the forms using select the data.
+<keygen>: The <keygen> tag in HTML is used to specify a key-pair generator field in a form. The purpose of <keygen> element is to provide a secure way to authenticate users. When a form is submitted then two keys are generated, private key and public key. The private key stored locally, and the public key is sent to the server. The public key is used to generate client certificate to authenticate user in future.
+<output>: The <output> tag in HTML is used to represent the result of a calculation performed by the client-side script such as JavaScript.
+<progress>: It is used to represent the progress of a task. It also defines how much work is done and how much is left to download a task. It is not used to represent the disk space or relevant query.
+<svg>: It is the Scalable Vector Graphics.
+<canvas>: The <canvas> tag in HTML is used to draw graphics on web page using JavaScript. It can be used to draw paths, boxes, texts, gradient and adding images. By default, it does not contain border and text.
+<audio>: It defines the music or audio content.
+<embed>: Defines containers for external applications (usually a video player).
+<source>: It defines the sources for <video> and <audio>.
+<track>: It defines the tracks for <video> and <audio>.
+<video>: It defines the video content.
