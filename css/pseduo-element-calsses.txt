@@ -1,1 +1,34 @@
+What are Pseudo-Elements?
+In CSS, pseudo-classes and pseudo-elements are two types of keywords that you can combine with selectors.
+They are used to target the element's state or specific parts of an element.
 
+Syntax
+The single colon : refers to pseudo-classes
+The double colon :: refers to pseudo-elements
+
+a:hover {
+  color: red;
+}
+
+p::first-letter {
+  font-size: 9em;
+}
+
+A CSS pseudo-element is used to style specified parts of an element.
+Style the first letter, or line, of an element
+Insert content before, or after, the content of an element
+
+The ::first-letter Pseudo-element
+The ::first-letter pseudo-element is used to add a special style to the first letter of a text.
+
+The following example formats the first letter of the text in all <p> elements: 
+
+p::first-letter {
+  color: #ff0000;
+  font-size: xx-large;
+}
+
+
+The opacity property specifies the opacity/transparency of an element.
+ransparent Image
+The opacity property can take a value from 0.0 - 1.0. The lower the value, the more transparent:
