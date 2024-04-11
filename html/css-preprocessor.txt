@@ -1,1 +1,33 @@
 
+CSS preprocessors are tools that extend the functionality of CSS by introducing features like variables, nesting, and mixins.
+They enhance the maintainability and organization of stylesheets. Here are some popular CSS preprocessors:
+
+Sass (Syntactically Awesome Stylesheets):
+Sass is one of the most widely used CSS preprocessors. It introduces features like variables, nesting, and mixins. SassScript is the scripting language in Sass.
+
+LESS:
+LESS is a backward-compatible language extension for CSS. Features include variables, nesting, and mixins. It is developed to be similar to Sass but with a simpler syntax.
+
+Stylus:
+Stylus is a preprocessor that aims to be more flexible and feature-rich. Syntax is minimalistic and indentation-based. It also supports variables, nesting, and a wide range of functions.
+
+SCSS (Sassy CSS):
+SCSS is an extension of Sass that uses a CSS-like syntax. It maintains compatibility with CSS syntax, making it easier for CSS developers to transition to SCSS.
+
+Mixins: Mixins helps to make a set of CSS properties reusable i.e. it saves one code and use it again and again. It can be included in other CSS rules by using the @include directive.
+
+This example describes the use of @mixin & @include.
+
+$fs: 30px;
+$bgcolor: #00ff40;
+#col2: #ff0066e1;
+$pd: 100px 350px;
+@mixin font_style() {
+ font-family: sans-serif;
+ font-size: $fs;
+ color: blue;
+}
+#dl {
+ @include font_style();
+ padding: $pd;
+}
