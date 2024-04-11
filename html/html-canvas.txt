@@ -1,2 +1,25 @@
 What is Canvas?
 The HTML5 canvas element can be used to draw graphics on the webpage via JavaScript
+
+SVG (Scalable Vector Graphics) is an XML-based vector image format, suitable for creating graphics and interactive elements.
+
+HTML5 Canvas is more like a blank canvas where you can draw whatever you want using pixels.
+SVG is great for logos and icons, while Canvas is good for dynamic animations and games.
+
+<svg id="svgelem" height="200">
+        <circle id="greencircle" cx="60"
+                cy="60" r="50" fill="green" />
+    </svg>
+
+
+
+<canvas id="newCanvas" width="100"
+            height="100" style="border:1px solid #000000;">
+    </canvas>
+ 
+    <script>
+        var c = document.getElementById('newCanvas');
+        var ctx = c.getContext('2d');
+        ctx.fillStyle = '#7cce2b';
+        ctx.fillRect(0, 0, 100, 100); 
+    </script>
