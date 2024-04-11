@@ -14,6 +14,17 @@ Stylus is a preprocessor that aims to be more flexible and feature-rich. Syntax 
 SCSS (Sassy CSS):
 SCSS is an extension of Sass that uses a CSS-like syntax. It maintains compatibility with CSS syntax, making it easier for CSS developers to transition to SCSS.
 
+Variables: Variables can be used to store CSS values that may be reused. To declare a variable in SASS, the ‘$’ character is used. For eg, $v_name.
+
+$fs: 30px;
+$bgcolor: #00ff40;
+$pd: 100px 350px;
+#dl {
+ font-size: $fs;
+ color: $bgcolor;
+ padding: $pd;
+}
+
 Mixins: Mixins helps to make a set of CSS properties reusable i.e. it saves one code and use it again and again. It can be included in other CSS rules by using the @include directive.
 
 This example describes the use of @mixin & @include.
