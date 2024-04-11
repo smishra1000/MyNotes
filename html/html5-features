@@ -37,3 +37,26 @@ Easy character encoding i.e., <meta charset=”UTF-8″>
 <source>: It defines the sources for <video> and <audio>.
 <track>: It defines the tracks for <video> and <audio>.
 <video>: It defines the video content.
+
+
+
+
+The HTML Geolocation is used to get the geographical position of a user. Due to privacy concerns, this position requires user approval.
+Geo-location in HTML5 is used to share the location with some websites and be aware of the exact location. It is mainly used for local businesses, 
+and restaurants, or showing locations on the map. It uses JavaScript to give latitude and longitude to the backend server.
+
+Most browsers support Geolocation API. Geo-location API uses a global navigator object
+
+<script>
+        let variable1 = document.getElementById("demo1");
+        function getlocation() {
+            navigator.geolocation.getCurrentPosition(showLoc);
+        }
+        function showLoc(pos) {
+            variable1.innerHTML =
+                "Latitude: " +
+                pos.coords.latitude +
+                "<br>Longitude: " +
+                pos.coords.longitude;
+        }
+    </script>
