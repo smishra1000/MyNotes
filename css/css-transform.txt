@@ -1,1 +1,29 @@
 
+The transform property in CSS is used to change the coordinate space of the visual formatting model. 
+This is used to add effects like skew, rotate, translate, etc on elements
+
+.element {
+  width: 20px;
+  height: 20px;
+  transform: scale(20);
+background-color: #0074d9;
+  height: 20px;
+  width: 20px;
+  transform: scale(20);
+  font-size: 1px;
+  padding: 1px;
+  color: white;
+  line-height: 2px;
+
+}
+<div class="element">
+This element is 20px wide and 20px tall but, with the scale function set to 20, it is now 400px wide and 400px tall. Text, padding and margins are also effected by this property.
+</div>
+
+transform: scaleX(2);
+transform: scaleY(.5);
+
+cale(): Affects the size of the element. This also applies to the font-size, padding, height, and width of an element, too. It’s also a a shorthand function for the scaleX and scaleY functions.
+skewX() and skewY(): Tilts an element to the left or right, like turning a rectangle into a parallelogram. skew() is a shorthand that combines skewX() and skewY by accepting both values.
+translate(): Moves an element sideways or up and down.
+rotate(): Rotates the element clockwise from its current position.
