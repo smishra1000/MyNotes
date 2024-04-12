@@ -2,3 +2,8 @@
 the difference between display: “none”; and visibility: “hidden”; right from the name itself we can tell the difference as 
 display: “none”; completely gets rids of the tag, as it had never existed in the HTML page 
 whereas visibility: “hidden”; just makes the tag invisible, it will still on the HTML page occupying space it’s just invisible.
+
+
+The opacity property specifies the opacity/transparency of an element.
+ransparent Image
+The opacity property can take a value from 0.0 - 1.0. The lower the value, the more transparent:
