@@ -27,3 +27,90 @@ scale(): Affects the size of the element. This also applies to the font-size, pa
 skewX() and skewY(): Tilts an element to the left or right, like turning a rectangle into a parallelogram. skew() is a shorthand that combines skewX() and skewY by accepting both values.
 translate(): Moves an element sideways or up and down.
 rotate(): Rotates the element clockwise from its current position.
+
+
+
+
+
+CSS Transform Property
+Transform property in CSS is invoked when there is a change in the state of the HTML element. You can rotate, skew, move and scale elements. 
+It occurs when the state of an element is modified, like when you hover the mouse over a button or perform a mouse-click
+
+Translate
+Translate property changes the position left/right and up/down of the element on the page based on the given X (horizontal) and Y (vertical) axes parameters. The positive X-axis parameter moves the element to the right, and the negative will do so to the left. The positive Y-axis parameter
+moves the element down, and the positive does so towards up.
+
+ <div class="container">
+            <h3>Hover!</h3>
+            <div id="box"></div>
+    </div>
+
+
+#box
+    {
+         width: 120px;
+         height: 120px;
+         background-color: rgba(55, 255, 5, 0.582);
+         border-radius: 12px;
+         border: solid rgb(110, 235, 110) 4px;
+     
+    }
+    #box :hover{ transform: translate(100%,60%);}
+
+
+
+
+Skew
+Skew tilts the element towards a direction based on the provided parameters to its X and Y axes. The Positive X parameter tilts it towards the right, and the negative tilts it towards the left
+
+<div class="container">
+            <h3>Hover!</h3>
+            <div id="box"></div>
+    </div>
+
+
+#box
+    {
+        width: 120px;
+        height: 120px;
+        background-color: rgba(246, 200, 250, 0.932);
+        border-radius: 12px;
+        border: solid rgb(246, 169, 253) 4px;
+     
+    }
+    #box :hover{ transform: skew(30deg,30deg);
+
+
+
+
+Scale
+Scale can increase or decrease the size of an HTML element based on the given parameters. The positive value increases the size in the X or Y direction, while the negative value decreases the size in X or Y direction.
+
+
+<div class="container">
+            <h3>Hover!</h3>
+            <div id="box"></div>
+    </div>
+
+
+
+
+Rotate
+Rotate property can rotate an element in the clockwise or anticlockwise direction based on a specified number of degrees. The positive degree rotates the element in the anticlockwise direction and the negative parameter rotates the element in the clockwise direction.
+
+
+
+<div class="container">
+            <h3>Hover!</h3>
+            <div id="box4"></div>
+    </div>
+
+#box4{
+        width: 120px;
+        height: 120px;
+        background-color: rgba(247, 169, 169, 0.788);
+        border-radius: 12px;
+        border: solid rgb(247, 169, 169) 4px;
+     
+    }
+    #box4:hover{ transform: rotate(25deg);}
