@@ -1,0 +1,86 @@
+What is the difference in position fixed, absolute, and relative in CSS?
+What is CSS specificity?
+What is sass? How did you make use of it?
+Difference between margin and padding?
+What is rem?
+What is mixin?
+Explain different CSS selectors.
+What are new features in HTML5?
+Explain Html5 storage.
+What are the Semantic elements in HTML?
+What is Field Set in HTML and why it’s needed?
+What is the latest feature introduced in CSS?
+How will you get to know when the latest features are introduced in CSS?
+Explain CSS Box model.
+What is the difference between inline and inline-block?
+Explain Bootstrap grid system and media queries?
+Different types of stylesheets?
+What is CSS specificity?
+What is Flexbox and how to align element vertically?
+Explain CSS positioning.
+How to display content horizontal?
+What are the display attribute?
+What is the importance of DOCTYPE in HTML?
+How to show multiple languages support in HTML.
+Difference between script, script async and script defer?
+What do you mean by progressive rendering?
+What are webworks?
+Difference between resting and normalizing? Which one preferred to use?
+Explain z-index property.
+What are the difference between padding and margin?
+What is the difference between absolute and relative positions?
+Explain CSS boxmodel.
+What is SEO?
+What is new in HTML5?
+What about translate and absolute?
+What you prefer to use flex or grid?
+Block formatting contexting how will work?
+Why mixins are used in SASS?
+Explain SEO and semantic HTML
+what is doc type in html
+What is the difference between CSS display:none vs hidden?
+Explain SEO.
+Explain Semantic elements HTML5.
+Explain doc type in html.
+How to increase the performance of web page.
+Explain CSS boxmodel?
+What is the Difference between div and span?
+Give me HTML5 elements?
+Find the output of the given CSS.
+What is the difference between SVG and canvas?
+What are new features in HTML5?
+Find the depth level of ul or ol? Below Eg depth=3
+Why html5 has &lt;section&gt;&lt;article&gt; etc new tags? Why is it important?
+Explain HTML 5 web storage.
+Describe Pseudo elements and pseudo classes?
+What does * { box-sizing: border-box; } do? What are its advantages?
+What does * { box-sizing: border-box; } do? What are its advantages?
+Explain Responsive design?
+Draw two Squares Side by Side with 100px height and Width with a distance of 25px. With two circles of color radius 20px exactly in the center of each square?
+What is the difference between opacity: 0 and visibility: hidden?
+Write a CSS code to vertically and horizontally center a div?
+How calc() function?
+Explain transform?
+Can we do counter through CSS?
+What is the difference between adaptive design and responsive design?
+How to open a mailbox in HTML
+what is font face?
+What is difference onready and onload?
+While designing a responsive web page, how can an image be made responsive?
+Solution:
+
+c:
+
+img{
+
+   width: 100%;
+
+   height: auto;
+
+}
+Explain Geolocation in HTML5.
+What are the different display types and transform types in CSS?
+Difference between '+' and '~' operator?
+How does rem differ from em in CSS?
+What are the different ways to hide the elements?
+How to make sure the page is working across the browser?

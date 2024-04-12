@@ -1,0 +1,123 @@
+18. What is the difference between margin and padding?
+Margin is used to create space around elements and padding is used to create 
+space around elements inside the border.
+We can set the margin property to auto but we cannot set the padding
+ property to auto.
+In Margin property we can allow negative or float number but in padding 
+we cannot allow negative values.
+Margin and padding target all the 4 sides of the element. Margin and padding 
+will work without the border property also. The difference will be more clear with the following example.
+
+19. What is CSS Box Model?
+The CSS box model is a container that contains multiple properties 
+including borders, margin, padding, and the content itself. It is used to 
+create the design and layout of web pages. It can be used as a toolkit for
+ customizing the layout of different elements. The web browser renders every 
+ element as a rectangular box according to the CSS box model.
+Box-Model has multiple properties in CSS. Some of them are given below:
+
+borders
+margins
+padding
+Content
+
+Border Area: It is the area between the box’s padding and margin. 
+Its dimensions are given by the width and height of the border.
+Margin Area: This area consists of space between border and margin. 
+The dimensions of the Margin area are the margin-box width and the 
+margin-box height. It is useful to separate the element from its neighbors.
+Padding Area: It includes the element’s padding. This area is actually 
+the space around the content area and within the border box. Its dimensions 
+are given by the width of the padding-box and the height of the padding-box.
+Content Area: This area consists of content like text, images, or other
+ media content. It is bounded by the content edge and its dimensions are
+  given by content box width and height.
+
+  21. How can we format text in CSS?
+CSS text formatting properties are used to format text and style text.
+CSS text formatting includes the following properties:
+
+Text-color
+Text-alignment
+Text-decoration
+Text-transformation
+Text-indentation
+Letter spacing
+Line height
+Text-direction
+Text-shadow
+Word spacing
+
+ What is the difference between display: none and visibility: hidden?
+Both of the property is quite useful in CSS. The visibility: “hidden”; 
+property is used to specify whether an element is visible or not in a 
+web document but the hidden elements take up space in the web document. 
+The visibility is a property in CSS that specifies the visibility behavior 
+of an element and display: “none” property is used to specify whether an
+ element is exist or not on the
+
+ 27. What are the various positioning properties in CSS?
+The position property in CSS tells about the method of positioning for an element or an HTML entity. There are five different types of position properties available in CSS:
+
+Fixed
+Static
+Relative
+Absolute
+Sticky
+The positioning of an element can be done using the top, right, bottom, and
+ left properties. These specify the distance of an HTML element from the 
+ edge of the viewport. To set the position by these four properties,
+  we have to declare the positioning method.
+
+Let’s talk about each of these position methods in detail:
+
+1. Fixed: Any HTML element with position: fixed property will be positioned relative to the viewport. An element with fixed positioning allows it to remain at the same position even as we scroll the page. We can set the position of the element using the top, right, bottom, and left.
+
+2. Static: This method of positioning is set by default. If we don’t mention the method of positioning for any element, the element has the position: static method by default. By defining Static, the top, right, bottom and left will not have any control over the element. The element will be positioned with the normal flow of the page.
+
+3. Relative: An element with position: relative is positioned relatively with the other elements which are sitting at top of it. If we set its top, right, bottom, or left, other elements will not fill up the gap left by this element.
+
+4. Absolute: An element with position: absolute will be positioned with respect to its parent. The positioning of this element does not depend upon its siblings or the elements which are at the same level.
+
+5. Sticky: Element with position: sticky and top: 0 played a role between 
+fixed & relative based on the position where it is placed. If the element 
+is placed in the middle of the document then when the user scrolls the document,
+ the sticky element starts scrolling until it touches the top. When it touches
+  the top, it will be fixed at that place in spite of further scrolling.
+   We can stick the element at the bottom, with the bottom property.
+
+. What does the CSS box-sizing property do?
+The box-sizing CSS property defines how the user should calculate the total width and height of an element i.e. padding and borders, are to be included or not.
+
+Syntax:
+
+box-sizing: content-box|border-box;
+Property Values:
+
+content-box: This is the default value of the box-sizing property. In this mode,
+ the width and height properties include only the content. Border and padding
+ 
+  are not included in it i.e if we set an element’s width to 200 pixels, 
+  then the element’s content box will be 200 pixels wide, and the width of
+   any border or padding will be added to the final rendered width.
+border-box: In this mode, the width and height properties include content, 
+padding, and borders i.e if we set an element’s width to 200 pixels,
+ that 200 pixels will include any border or padding we added, and the 
+ content box will shrink to absorb that extra width. This typically makes 
+ it much easier to size elements.   
+
+
+ . What is specificity in CSS?
+When more than one set of CSS rules applies to the same element, the browser will have to decide which specific set will be applied to the element. The rules the browser follows are collectively called Specificity
+
+Specificity Rules include:
+
+CSS style applied by referencing external stylesheet has the lowest precedence and is overridden by Internal and inline CSS.
+Internal CSS is overridden by inline CSS.
+Inline CSS has the highest priority and overrides all other selectors.
+Specificity Hierarchy: Every element selector has a position in the Hierarchy.
+
+Inline style: Inline style has the highest priority.
+Identifiers(ID): ID has the second-highest priority.
+Classes, pseudo-classes, and attributes: Classes, pseudo-classes, and attributes have come next.
+Elements and pseudo-elements: Elements and pseudo-elements have the lowest priority.
