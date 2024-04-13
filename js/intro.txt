@@ -10,3 +10,6 @@ hows many way we can create onjects
 2) constructor function
 3) object create
 4) object assign 
+
+
+let obj = {}
