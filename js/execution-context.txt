@@ -1,0 +1,65 @@
+var name = "sameer";
+
+function showNameInCaps(str) {
+  return str.toUpperCase();
+}
+
+var name1 = showNameInCaps(name);
+  
+
+console.log(name1)
+
+What is the Execution Context?
+When the JavaScript engine scans a script file, it makes an environment called 
+the Execution Context that handles the entire transformation and execution of 
+the code.
+
+During the context runtime, the parser parses the source code and allocates
+ memory for the variables and functions. The source code is generated and gets
+  executed.
+
+  There are two types of execution contexts: global and function. 
+** The global execution context is created when a JavaScript script first starts
+   to run, and it represents the global scope in JavaScript.
+
+**A function execution context is created whenever a function is called, 
+    representing the function's local scope.
+
+Phases of the JavaScript Execution Context
+There are two phases of JavaScript execution context:
+
+Creation phase: In this phase, the JavaScript engine creates the execution 
+context and sets up the script's environment. It determines the values of 
+variables and functions and sets up the scope chain for the execution context.
+
+
+Execution phase: In this phase, the JavaScript engine executes the code in 
+4the execution context. It processes any statements or expressions in the 
+script and evaluates any function calls.  
+
+
+
+Creation Phase------------------------------------------------------------------
+At the very beginning, the JavaScript engine executes the entire source code, 
+creates a global execution context, and then does the following things:
+
+Creates a global object that is window in the browser and global in NodeJs.
+Sets up a memory for storing variables and functions.
+Stores the variables with values as undefined and function references.
+
+
+
+Execution Phase-----------------------------------------------------------------
+Now, in this phase, it starts going through the entire code line by line from 
+top to bottom. As soon as it encounters name = "sameer", it assigns the value 
+sameer to 'name' in memory. Until now, the value of 'name' was undefined by default.
+top to bottom. As soon as it encounters name = "sameer", it assigns the value  
+to 'name' in memory. Until now, the value of 'name' was undefined by default.
+
+Then we get to the 'showNameInCaps' function. As the function has been 
+allocated in memory, it directly jumps into the line var name1 = showNameInCaps(n);. 
+showNameInCaps() will be invoked and JavaScript once again will create 
+a new function execution context.
+
+
+https://www.freecodecamp.org/news/how-javascript-works-behind-the-scene-javascript-execution-context/

@@ -1,0 +1,37 @@
+Closures are a powerful and fundamental concept in JavaScript. They allow inner 
+functions to access variables from their outer scope, even after the outer 
+function has completed execution
+
+Lexical Scoping
+Lexical scoping refers to how a parser resolves variable names when functions 
+are nested. The location where a variable is declared within the source code 
+determines where that variable is available. Nested functions have access to 
+variables declared in their outer scope
+
+
+
+Usage of clousre 
+
+
+Private variables and methods
+Closures can also be used to encapsulate private data/methods. Take a look at this example:
+
+
+const bankAccount = (initialBalance) => {
+  const balance = initialBalance;
+
+  return {
+    getBalance: function() {
+      return balance;
+    },
+    deposit: function(amount) {
+      balance += amount;
+      return balance;
+    },
+  };
+};
+
+const account = bankAccount(100);
+
+account.getBalance(); // 100
+account.deposit(10); // 110

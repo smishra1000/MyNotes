@@ -1,0 +1,104 @@
+What exactly is Scope?
+Scope refers to the area where an item (such as a function or variable) is 
+visible and accessible 
+
+Scope means area, space, or region.
+Global scope means global space or a public space.
+Local scope means a local region or a restricted region
+
+JavaScript Scope is the area where a variable (or function) exists and is 
+accessible. We can layer the scope in a system which means the child scope
+ can access the parent scope but not vice-versa.
+
+ Global Scope
+Those variables which are declared outside the function or blocks or you can 
+say curly braces({}) are having a global scope.
+
+In a JavaScript program, global variables can be accessed from anywhere.
+The scope of var, let, and const are quite equivalent when declared outside the function.
+
+var global_variable1 = "epam";
+let global_variable2 = "sameer";
+const global_variable3 = "epamer";
+ 
+function check_global_variables(){
+    console.log(global_variable1);
+    console.log(global_variable2);
+    console.log(global_variable3);
+}
+ 
+check_global_variables();
+
+
+Function Scope
+Those variables that are declared inside a function have local or function 
+scope which means variables that are declared inside the function are not 
+accessible outside that function.
+
+When declared inside a function, variables declared with var, let, and const 
+look quite similar.
+
+
+function check_function_scope(){
+    var variable1 = "sameer";
+    let variable2 = "epam";
+    const variable3 = "sameer";
+    console.log(variable1);
+    console.log(variable2);
+}
+ 
+check_function_scope();
+console.log(variable3);
+
+Block Scope
+Before the ECMA6(2015) we have only global and function scope but when the 
+Let and Const keywords were introduced in ES6 they provide the block scope
+
+Variables that are declared inside the { } (curly braces) can only access inside 
+that scope not from the outside of it.
+
+Variables declared with var do not have block scope only let and const have block
+ scope.
+
+
+
+
+ Shadowing: Now, when a variable is declared in a certain scope having the 
+ same name defined on its outer scope and when we call the variable from the 
+ inner scope, the value assigned to the variable in the inner scope is the 
+ value that will be stored in the variable in the memory space. This is known
+  as Shadowing or Variable Shadowing. In JavaScript, the introduction of
+   let and const in ECMAScript 6 along with block scoping allows variable 
+   shadowing.
+
+function func() {
+    let a = 'Geeks';
+     
+    if (true) {
+        let a = 'GeeksforGeeks';  // New value assigned
+        console.log(a); 
+    }
+     
+    console.log(a); 
+}
+func();  
+
+
+Illegal Shadowing: 
+Now, while shadowing a variable, it should not cross the boundary of the scope,
+ i.e. we can shadow var variable by let variable but cannot do the opposite. 
+ So, if we try to shadow let variable by var variable, it is known as Illegal 
+ Shadowing and it will give the error as “variable is already defined.” 
+
+ function func() {
+    var a = 'Geeks';
+    let b = 'Geeks';
+     
+    if (true) {
+        let a = 'GeeksforGeeks'; // Legal Shadowing
+        var b = 'Geeks'; // Illegal Shadowing
+        console.log(a); // It will print 'GeeksforGeeks'
+        console.log(b); // It will print error
+    }
+}
+func();
