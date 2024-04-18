@@ -1,0 +1,36 @@
+What is a Media Query?
+In CSS, a media query is used to apply a set of styles based on the browser's characteristics including width, height, or screen resolution.
+
+The media type refers to the category of media for the device. The different media types include all, print, screen and speech.
+
+all - works for all devices
+print - works for devices where the media is in print preview mode
+screen - works for devices with screens
+speech - works for devices like screen readers where the content is read out loud to the user
+
+
+ex-In the CSS, we want to add a (max-width: 600px) for the media query which tells the computer to
+target devices with a screen width of 600px and less.
+
+@media (max-width: 600px) {
+  body {
+    background-color: #87ceeb;
+  }
+}
+
+In this second example, we want to change the background color from blue to red if the device has a width between 600 and 768px. We can 
+use the and operator to accomplish this.
+
+@media (min-width: 600px) and (max-width: 768px) {
+  body {
+    background-color: #de3163;
+  }
+
+Range of device target based on range to achive responsive desgine
+  
+320px — 480px: Mobile devices
+481px — 768px: iPads, Tablets
+769px — 1024px: Small screens, laptops
+1025px — 1200px: Desktops, large screens
+1201px and more —  Extra large screens, TV
+}
