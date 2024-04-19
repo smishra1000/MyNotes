@@ -1,0 +1,78 @@
+What is this in JavaScript?
+At its core, this is a special keyword in JavaScript that refers to the current
+ execution context or the object to which a function belongs. The value of this
+  changes dynamically depending on how a function is called or how an object 
+  method is invoked
+
+
+  this in the Global Context
+When this is used in the global context, outside of any function or object, 
+it defaults to the global object. In a browser environment, the global object
+ is usually the window object
+
+ console.log(this); // window (in a browser environment)
+
+
+ this in Object Construction
+When creating objects using constructor functions and the new keyword, this 
+refers to the newly created instance of the object. Constructor functions are 
+used to create multiple instances of an object with shared properties and methods.
+
+function Person(name) {
+  this.name = name;
+}
+const john = new Person('John');
+console.log(john.name); // John
+
+
+
+this in Object Methods
+In JavaScript, methods are functions that are associated with objects. When 
+a method is invoked, this inside the method refers to the object itself. This 
+allows the method to access and modify the object's properties and perform 
+actions specific to that object.
+
+const person = {
+  name: 'John',
+  sayHello: function() {
+    console.log('Hello, ' + this.name + '!');
+  }
+};
+person.sayHello(); // Hello, John!
+
+
+this in Simple Functions
+In simple functions, which are not associated with any object, this behaves 
+differently compared to object methods. When a simple function is invoked,
+ this inside the function refers to the global object (window in a browser
+  environment).
+
+function greet() {
+  console.log('Hello, ' + this.name + '!');
+}
+
+const person = {
+  name: 'John',
+  sayHello: greet
+};
+
+greet(); // Hello, undefined!
+person.sayHello(); // Hello, John!
+
+
+
+
+
+this in Event Listeners
+In JavaScript, event listeners are commonly used to handle user interactions,
+ such as clicks and keyboard input. When an event listener function is invoked,
+  this inside the function refers to the element that triggered the event.
+
+const button = document.querySelector('button');
+
+button.addEventListener('click', function() {
+  console.log(this); // button element
+});
+In the example above, the click event listener is attached to a button element.
+ When the button is clicked, the event listener function is called, and this 
+ inside the function refers to the button element itself.
