@@ -1,0 +1,3 @@
+
+deploy frontend and backend in render
+https://dev.to/kunalukey/how-to-setup-and-deploy-a-mern-stack-project-for-free-5acl
