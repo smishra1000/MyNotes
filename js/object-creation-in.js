@@ -95,3 +95,7 @@ const person = new Person('testFirstName', 'testLastName');
 
 console.log(person.firstName); // testFirstName
 console.log(person.lastName); // testLastName
+
+
+
+https://medium.com/@kamresh485/mastering-javascript-object-defineproperty-a-comprehensive-guide-with-coding-examples-f3ed633f2bfa
