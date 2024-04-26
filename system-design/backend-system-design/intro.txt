@@ -1,0 +1,26 @@
+Backend system design
+
+System Design intro
+Client - Server Protocol
+Architecture-Monolith & Microservices
+MessageQueue
+Websockets
+CAP Theorem(consistency,availability,partition)
+Proxies
+Load Balancers
+Caching
+Data Storage
+Types Of DB-SQL NOSQL
+Migration
+Indexing
+Replication
+Sharding
+Clustering
+Horizontal, Vertical Scaling
+Polling- long,short
+Rate Limiting
+Fault Tolerance
+Logging & Monitoring
+API
+Security Principles
+One Project with all topics

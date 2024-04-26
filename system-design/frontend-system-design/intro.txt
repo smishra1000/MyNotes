@@ -1,0 +1,163 @@
+
+FRONTEND SYSTEM DESIGNE
+
+how web works 
+communication protocol 
+rest api 
+    overview
+    http req/res with headers
+    http methods
+    http status codes
+    best practices+examples
+
+graphql 
+    overview
+    schema types
+    query mutation
+    resolver
+    working example 
+grpc 
+    overvew 
+    service defnition
+    rpsc methods 
+    idl (interface defnition language
+    )  
+    code generation 
+    working examples 
+
+
+Communication Protocols Techniques
+    short polling 
+    long polling
+    web sockets 
+    server side events
+    webhooks 
+    props and cons of each
+    working example
+    interview questions
+
+Security 
+    overview 
+    cross site scripting 
+    cross site request frogery 
+    ifame protection
+    Authentication/Authorization
+    security headers 
+    client side security
+    secure communication(https)
+    dependency security 
+    compilance and regulation
+    input validation and sanitization 
+    server side request frogery (ssrf)
+    server side javascript injections
+    feature policy permisiion policy
+    subresourse integrity
+    cross origin resource sharing
+    interview questions
+
+    Performance 
+        module introduction
+        overview
+        asset optimization
+        network optimization
+        build optimization
+        react optimization
+        javascript optimization
+        performance monitoring
+        performance tools
+        rendering pattern
+        interview questions
+
+Database caching 
+    module intro
+    overview
+    local storage
+    session storage
+    cookie storage
+    indexDB
+    normalization 
+    http caching 
+    service working caching
+    API CACHING
+    state management
+    interview questions
+
+Testing 
+    overview
+    unit testing 
+    component tetsing
+    integration testing 
+    e2e testing 
+    A/B testing 
+    test drive Development overview
+    Automation testing
+    Testing tools and libraries
+    interview questions 
+
+ LLD 
+    Module intro
+    important design pattern
+    component design
+    state management
+    routing
+    solid principles 
+    lld infinite scroll 
+    lld nested components 
+    lld pagination
+    lld -image carousel
+    lld live streaming chat UI
+    lld --autocomplete/searchbar
+    interview questions
+
+
+HLD
+    module introduction
+    HLD-social media feed
+    HLD-photo sharing app
+    ecommerc aapp
+    video stremaing 
+    google docs 
+    google sheets
+    diagram tools
+    music treaming
+    cab service
+    analytics dashbaird
+    interview questions
+
+offline support
+    module intro
+    overview
+    progressive web app
+    service workers
+    interview questions
+
+Accessibility
+
+    Overview
+    keyboard Accessbility
+    Screen Reader
+    Color Contrast
+    Interview questions
+
+
+Logging and Monitoring
+    module intro
+    overview
+    telementry
+        error logging
+        feature usage
+        user tracking
+        working with tools
+    Alerting
+        performance
+        infra capicity
+        error threshold
+        api failure
+
+    Fixixng
+        prioritization debugging 
+        Mitigation
+        Prevention
+        interview questions
+
+
