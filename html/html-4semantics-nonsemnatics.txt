@@ -26,3 +26,80 @@ Non-Semantic elements: Unlike, semantic elements they don’t have any meaning. 
 Following is the list of some non-semantic elements:
 div
 span
+
+
+
+All Important Semantics tag 
+
+<details>
+  <summary>Epcot Center</summary>
+  <p>Epcot is a theme park at Walt Disney World Resort featuring exciting attractions, international pavilions, award-winning fireworks and seasonal special events.</p>
+</details>
+The <summary> tag defines a visible heading for the <details> element. The heading can be clicked to view/hide the details.
+
+Note: The <summary> element should be the first child element of the <details> element.
+
+article:
+It contains independent content which doesn’t require any other context blog Post, Newspaper Article, etc.
+ <article>
+        <h1>GeeksforGeeks</h1>
+        <p>A Computer Science Portal for Geeks</p>
+    </article>
+
+Aside:
+It is used to place content in a sidebar i.e. aside from the existing content. It is related to surrounding content.
+<aside>
+        <h4>GeeksForGeeks</h4>
+        <p>GeeksforGeeks is a computer Science platform
+            where you can learn good programming.
+        </p>
+    </aside>
+
+Details and Summary:
+“details” defines additional details that the user can hide or view. “summary” defines a visible heading for a “details” element.
+<details>
+        <summary class="GFG">
+            GeeksforGeeks
+        </summary>
+        <p>GeeksforGeeks is a Computer Science portal
+            where you can learn good programming.
+        </p>
+    </details>
+
+
+
+Figure and Figcaption:
+These are used to add an image to a web page with a small description.
+
+<figure>
+        <img src="4.jpg"
+             alt="gfg"
+             style="width:20%">
+        <figcaption>
+          GeeksforGeeks Logo
+          </figcaption>
+    </figure>
+
+Main:
+It defines the main content of the document. The content inside the main tag should be unique.
+
+
+Section:
+A page can be split into sections like Introduction, Contact Information, Details, etc and each of these sections can be in a different section tag.
+<section>
+        <h1>Algorithm</h1>
+        <p>
+            A process or set of rules to
+            be followed in calculations
+            or other problem-solving
+            operations, especially by
+            a computer.
+        </p>
+    </section>
+
+nav:
+It is used to define a set of navigation links in the form of a navigation bar or nav menu. 
+
+
+Mark:
+It is used to highlight the text.
