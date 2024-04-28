@@ -1,0 +1,58 @@
+Generator-Function: A generator-function is defined like a normal function,
+ but whenever it needs to generate a value, it does so with the yield keyword
+  rather than return. The yield statement suspends the function’s execution and
+   sends a value back to the caller, but retains enough state to enable the 
+   function to resume where it is left off. When resumed, the function continues
+    execution immediately after the last yield run. 
+
+Syntax : 
+
+// An example of generator function
+function* gen(){
+     yield 1;
+     yield 2;
+     ...
+     ...
+}
+
+
+// Generate Function generates three  
+// different numbers in three calls 
+function* fun() { 
+    yield 10; 
+    yield 20; 
+    yield 30; 
+} 
+  
+// Calling the Generate Function 
+let gen = fun(); 
+console.log(gen.next().value); 
+console.log(gen.next().value); 
+console.log(gen.next().value);
+
+
+
+Return from generators----------------------
+
+
+function* generator() { 
+    yield 'a'; 
+    return 'result'; 
+    yield 'b'; 
+} 
+  
+let it = generator(); 
+console.log(JSON.stringify(it.next())); 
+// {value: "a", done: false} 
+console.log(JSON.stringify(it.next())); 
+  // {value: "result", done: true}
+
+
+  
+
+Advantages of generators: They are memory efficient as lazy evaluation takes 
+place, i.e, delays the evaluation of an expression until its value is needed.
+JavaScript use-case (generators)
+
+Writing generators in redux-saga
+JavaScript async-await (Implemented with promise and generators
