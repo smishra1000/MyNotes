@@ -1,0 +1,30 @@
+// Parent constructor function
+function Person(name, age) {
+   this.name = name;
+   this.age = age;
+}
+// Adding a method to the prototype
+Person.prototype.getName = function() {
+   return this.name;
+};
+// Child constructor function
+function Employee(name, age, company) {
+   
+   // Calling the parent constructor function
+   Person.call(this, name, age);
+   this.company = company;
+}
+// what is id odnt write thse line
+// Setting the prototype of the child constructor function
+Employee.prototype = Object.create(Person.prototype);
+Employee.prototype.constructor = Employee;
+
+// Adding a method to the child constructor function
+Employee.prototype.getCompany = function() {
+   return this.company;
+};
+const employee1 = new Employee("John", 25, "Google");
+console.log(employee1.name); // "John"
+console.log(employee1.age); // 25
+console.log(employee1.getName()); // "John"
+console.log(employee1.getCompany()); // "Google"

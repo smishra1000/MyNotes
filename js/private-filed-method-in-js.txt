@@ -1,0 +1,32 @@
+By default, members of a class are public. ES2020 introduced the private members that include private fields and methods.
+
+To make a public method private, you prefix its name with a hash #. JavaScript 
+allows you to define private methods for instance methods, static methods, and 
+getter/setters.
+
+class User {
+  #name;
+  
+  constructor(name) {
+    this.#name = name;
+  }
+  
+  #generatePassword() {
+    return "123
+  }
+  
+  getUserName() {
+    return this.#name;
+  }
+  
+  resetPassword() {
+    const newPassword = this.#generatePassword();
+    console.log(`Password reset for user ${this.#name}. New password is ${newPassword}`);
+  }
+}
+
+const user1 = new User('Alice');
+console.log(user1.getUserName()); // Output: Alice
+user1.resetPassword(); // Output: Password reset for user Alice. New password is zXm9nLoF
+console.log(user1.#name); // Error: Private field '#name' is not defined in this context
+console.log(user1.#generatePassword()); // Error: Private method '#generatePassword' is not defined in this context
