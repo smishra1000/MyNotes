@@ -1,0 +1,22 @@
+By default, JavaScript is a synchronous, single threaded programming language. 
+This means that instructions can only run one after another, and not in parallel.
+ Consider the little code snippet below:
+
+let a = 1;
+let b = 2;
+let sum = a + b;
+console.log(sum);
+
+What is Asynchronous Programming?
+Asynchronous programming is a technique that allows your program to run its
+ tasks concurrentlyAsynchronous programming makes your JavaScript programs run faster, and you can perform asynchronous programming with any of these:
+
+Callbacks
+Promises
+Async/Await
+
+ Asynchronous programming makes your JavaScript programs run faster, and you can perform asynchronous programming with any of these:
+
+Callbacks
+Promises
+Async/Await
