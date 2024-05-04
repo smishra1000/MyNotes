@@ -32,3 +32,6 @@ Width and height are defined by the border.
 4. Margin Area
 Separates the element from neighboring elements.
 Dimensions specified by the margin-box width and height.
+
+
+Box model comes with 4 properties
