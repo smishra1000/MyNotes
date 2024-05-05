@@ -35,3 +35,4 @@ Dimensions specified by the margin-box width and height.
 
 
 Box model comes with 4 properties
+The CSS border properties allow you to specify the style, width, and color of an element's border.
