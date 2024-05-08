@@ -1,7 +1,7 @@
 Constructors
 Constructors in JavaScript are special functions that are used to construct objects.
 
-  function Person () {
+function Person () {
      this.firstname = "Lawrence"
      this.lastname = "Eagles"
      this.occupation = "Software Developer"
