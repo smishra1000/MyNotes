@@ -198,3 +198,54 @@ console.log(fib.next().value); // 1
 console.log(fib.next().value); // 2 
 console.log(fib.next().value); // 3 
 console.log(fib.next().value); // 5
+
+
+
+REST NAD SPREAD
+JavaScript uses three dots (...) for both the rest and spread operators. 
+But these two operators are not the same.
+
+The main difference between rest and spread is that the rest operator puts 
+the rest of some specific user-supplied values into a JavaScript array.
+ But the spread syntax expands iterables into individual elements.
+
+spread operator (…). The merged array contains elements in the order they’re merged.
+ <script>
+    var array1 = [10, 20, 30, 40, 50];
+    var array2 = [60, 70, 80, 90, 100];
+    var array3 = [...array1, ...array2];
+   console.log(array3);
+</script>
+
+// Define a function with two regular parameters and one rest parameter:
+function myBio(firstName, lastName, ...otherInfo) { 
+  return otherInfo;
+}
+
+// Invoke myBio function while passing five arguments to its parameters:
+myBio("Oluwatobi", "Sofela", "CodeSweetly", "Web Developer", "Male");
+
+How Spread Works in an Array Literal
+const arra1 = [10,20,30];
+const arra2 = [5,...arra1];
+
+console.log(arra2);
+
+
+How to Use Spread to Convert a String into Individual Array Items
+const myName = "test";
+
+console.log([...myName]);
+
+// The invocation above will return:
+[ "t","e","s","t"]
+
+
+const myName = { firstName: "sameer", lastName: "mishra" };
+const bio = { ...myName };
+
+myName.firstName = "sameer update";
+
+console.log(myName); // { firstName: "sameer update", lastName: "Sofela" }
+
+console.log(bio); // { firstName: "sameer", lastName: "mishra" }
