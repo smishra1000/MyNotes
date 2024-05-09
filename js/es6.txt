@@ -37,3 +37,164 @@ Symbols are always unique.
 If you create two symbols with the same description they will have different values:
 
 Symbol("id") == Symbol("id"); // false
+
+
+
+
+The Map Object Explained
+The Map object stores data in a key/value pair structure, just like an Object.
+ The main differences between a regular object and a Map are:
+
+A Map can have any type of data as the key value
+A Map maintains the order of data added to the object
+How to Create a Map Object
+To create a Map object, you can call the Map() constructor as follows:
+
+const myMap = new Map();
+
+A Map object has the following methods and properties:
+
+set(key, value) – Adds a key/value pair to a Map
+get(key) – Retrieves a value from a Map (returns undefined if key doesn't exist)
+has(key) – Checks if a Map has a specific key
+delete(key) – Removes a specific key from a Map
+clear() – Removes all items from a Map
+keys() – Returns all keys in a Map
+values() – Returns all values in a Map
+entries() – Returns all keys and values in a Map
+size – Returns the number of items in Map
+
+const myMap = new Map();
+
+myMap.set(1, 'Jack');
+myMap.set(2, 'Jill');
+myMap.set('animal', 'Elephant');
+
+console.log(myMap.get(1)); // Jack
+
+console.log(myMap.get('animal')); // Elephant
+
+
+Set Object Explained
+The Set object allows you to store a collection of elements, just like an Array. 
+The differences between a Set and an array are:
+
+A Set requires all elements to be unique
+A Set has fewer methods for data manipulation
+How to Create a Set Object
+To create a new Set object, you need to call the Set() constructor as follows:
+
+const mySet = new Set();
+
+Set Object Methods and Properties
+A Set object has the following methods and properties:
+
+add(value) – Adds a value to a Set
+has(value) – Checks if a Set contains a specific value
+delete(value) – Removes a specific value from a Set
+clear() – Removes all items from a Set
+keys() – Returns all values in a Set
+values() – Returns all values in a Set
+entries() – Returns all values in a Set as [value, value] array
+size – Returns the number of items in Set
+
+const mySet = new Set();
+
+mySet.add(1);
+mySet.add(2);
+mySet.add(3);
+
+console.log(mySet); // [1, 2, 3]
+
+
+
+WeakMap
+A WeakMap is a collection of key-value pairs where the keys must be objects,
+ and the values can be of any type. Unlike a regular Map, a WeakMap's key 
+ references are weak, meaning they do not prevent the garbage collector from 
+ removing the key and its associated value when there are no other references 
+ to them. This makes WeakMaps useful in scenarios where you want to associate 
+ data with objects without preventing those objects from being garbage collected.
+
+ Creating a WeakMap
+const weakMap = new WeakMap();
+
+Methods and Usage
+set(key, value): Adds a new key-value pair to the WeakMap.
+get(key): Retrieves the value associated with the given key.
+has(key): Checks if a key exists in the WeakMap.
+delete(key): Removes the key-value pair associated with the given key.
+const person = { name: "Alice" };
+const weakMap = new WeakMap();
+
+weakMap.set(person, 30); // Associate age 30 with the person object
+
+console.log(weakMap.has(person)); // true
+console.log(weakMap.get(person)); // 30
+
+weakMap.delete(person); // Remove the key-value pair
+
+
+
+WeakSet
+A WeakSet is a collection of objects where each object can only occur once in
+ the set. Similar to WeakMap, the references to objects in a WeakSet are weak, 
+ meaning they do not prevent the garbage collector from removing the objects 
+ when there are no other references to them.
+
+Creating a WeakSet
+const weakSet = new WeakSet();
+Methods and Usage
+add(value): Adds a new object to the WeakSet.
+has(value): Checks if an object exists in the WeakSet.
+delete(value): Removes an object from the WeakSet.
+
+const obj1 = { id: 1 };
+const obj2 = { id: 2 };
+const weakSet = new WeakSet();
+
+weakSet.add(obj1);
+weakSet.add(obj2);
+
+console.log(weakSet.has(obj1)); // true
+
+weakSet.delete(obj1); // Remove obj1 from the WeakSet
+
+
+
+Generators in JavaScript: 
+Generator functions are a type of function introduced in the ES6 version of 
+JavaScript. Unlike regular functions, generators allow other codes to enter 
+and exit multiple times. When a generator function encounters a “yield” 
+expression, it pauses its execution until it receives instructions to continue 
+from an external source.
+
+One of the most important distinctions between generators and regular functions 
+is that generators can produce multiple values during their execution. Rather 
+than generating all of the values at once, they produce a sequence of values 
+on a per-request basis. When a value is requested, the generator function 
+provides it until it reaches the end of its execution. At that point, the
+ “done” flag is set to true to indicate that the generator has completed 
+ its task. 
+
+ function* myGenerator(){
+     //code
+}
+
+function* fibonacci() { 
+    let a = 0; 
+    let b = 1; 
+    while (true) { 
+        yield a; 
+        [a, b] = [b, a + b]; 
+    } 
+} 
+  
+const fib = fibonacci(); 
+  
+console.log(fib.next().value); // 0 
+console.log(fib.next().value); // 1 
+console.log(fib.next().value); // 1 
+console.log(fib.next().value); // 2 
+console.log(fib.next().value); // 3 
+console.log(fib.next().value); // 5

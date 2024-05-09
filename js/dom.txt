@@ -51,6 +51,44 @@ Getting content with textContent
 const navElement = document.querySelector('nav')
 console.log(navElement.textContent)
 
-The textContent property returns the content as it in the HTML markup. Like innerText, it also ignores the HTML tags. But 
+The textContent property returns the content as it in the HTML markup. Like 
+innerText, it also ignores the HTML tags. But 
 it doesn't consider styles, so it returns the "Pricing" text even though 
 it's hidden
+
+
+
+
+What is the innerHTML Property?
+When you use the innerHTML property, it reads both the HTML markup and the 
+text content of the element. This means when you use it to set the content 
+of elements, you can include HTML tags, and the browser will render them 
+correctly.
+
+But, be cautious if you're inserting content from user input or any untrusted 
+source with innerHTML. Attackers can use the HTML <script> tag to insert and 
+run malicious code in your app
+
+
+What is the innerText Property?
+This property focuses on the rendered text content. When you use innerText to
+ read the content of an element, it returns the text as it appears on screen.
+  It ignores HTML tags. And it also does not include text that is hidden with
+   CSS styles.
+
+
+What is the textContent Property?
+The textContent property also ignores all HTML tags and returns only the text. 
+Whiles innerText reads text as it is rendered on screen, textContent reads text 
+as it is in the markup. It also returns all text, whether it's rendered on screen
+ or not.
+
+
+
+
+ The innerHTML property recognizes HTML tags and renders the content according 
+ to the tags. innerText and textContent ignore HTML tags and treat them as part 
+ of the text. You also learned in this article how innerHTML can lead to security
+  risks and why you should be mindful of this.
+
+Also, innerText reads content as it appears on screen, ignores hidden content, and observes formatting of text. But textContent reads content as it appears in the markup. This means it reads hidden content too. But it also ignores formatting like whitespaces and line breaks when you are using it set content.
