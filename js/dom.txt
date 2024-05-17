@@ -28,6 +28,7 @@ You can select an element based on its unique ID with the getElementById()
   <a>Contact</a>
   <a style="display: none">Pricing</a>
 </nav>
+
 Getting content with innerHTML
 // Reading content with innerHTML
 const navElement = document.querySelector('nav')
@@ -91,4 +92,64 @@ as it is in the markup. It also returns all text, whether it's rendered on scree
  of the text. You also learned in this article how innerHTML can lead to security
   risks and why you should be mindful of this.
 
-Also, innerText reads content as it appears on screen, ignores hidden content, and observes formatting of text. But textContent reads content as it appears in the markup. This means it reads hidden content too. But it also ignores formatting like whitespaces and line breaks when you are using it set content.
+Also, innerText reads content as it appears on screen, ignores hidden content,
+ and observes formatting of text. But textContent reads content as it appears 
+ in the markup. This means it reads hidden content too. But it also ignores
+  formatting like whitespaces and line breaks when you are using it set content.
+
+
+
+  Methods
+parentNode.getElementsByClassName() - returns an HTMLCollection
+parentNode.getElementsByTagName()   - returns an HTMLCollection
+parentNode.getElementsByTagNameNS() - returns an HTMLCollection
+  document.getElementsByName()      - returns a NodeList
+Properties
+parentNode.children   - returns an HTMLCollection
+      Node.childNodes - returns a NodeList
+
+
+
+
+Theory
+According to MDN documentation:
+
+getElementsByClassName() returns a live HTMLCollection representing an array-like
+ object of all child elements which have all of the given class name(s).
+
+
+querySelectorAll() returns a static (not live) NodeList representing a list of 
+the document's elements that match the specified group of selectors.
+
+Hands-on
+Let's consider the following HTML structure:
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo</title>
+  </head>
+  <body>
+    <ul id="list">
+      <li class="item">First Item</li>
+      <li class="item">Second Item</li>
+      <li class="item">Third Item</li>
+    </ul>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+//get UL element
+const list = document.getElementById('list');
+
+//Get items by class name (two ways)
+const itemsByClassName = document.getElementsByClassName('item');
+const itemsByQuerySelector = document.querySelectorAll('.item');
+
+console.log('First console log', itemsByClassName, itemsByQuerySelector);
+
+//adding the fourth element
+list.innerHTML += `<li class="item">Fourth Item</li>`;
+
+console.log('Second console log', itemsByClassName, itemsByQuerySelector);
