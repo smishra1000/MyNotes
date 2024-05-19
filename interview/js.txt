@@ -199,3 +199,4 @@
 - “In React, everything is a component.” Explain
 - different phases of React component’s lifecycle
 - track the unmounting of a functional component
+- Example of custom hooks
