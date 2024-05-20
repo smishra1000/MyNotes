@@ -7,3 +7,7 @@ whereas visibility: “hidden”; just makes the tag invisible, it will still on
 The opacity property specifies the opacity/transparency of an element.
 ransparent Image
 The opacity property can take a value from 0.0 - 1.0. The lower the value, the more transparent:
+
+The visibility property specifies whether or not an element is visible.
+
+Tip: Hidden elements take up space on the page. Use the display property to both hide and remove an element from the document layout!
