@@ -249,3 +249,47 @@ myName.firstName = "sameer update";
 console.log(myName); // { firstName: "sameer update", lastName: "Sofela" }
 
 console.log(bio); // { firstName: "sameer", lastName: "mishra" }
+
+
+
+
+
+Differences
+Named Exports:
+
+Named Exports---------------------------------------------------------------------------------------------------------------------------------------
+With named exports, you can export multiple values from a module by name. Each exported value needs to be explicitly named. These exports can then be imported by their specific names in other modules.
+// math.js
+export const add = (a, b) => a + b;
+export const subtract = (a, b) => a - b;
+export const multiply = (a, b) => a * b;
+
+// In another module
+import { add, subtract, multiply } from './math.js';
+
+
+Named Export-----------------------------------------------------------------------------
+Allows you to export multiple values from a module.
+Each value is exported with a specific name.
+When importing, you need to use the exact same name.
+Useful for exporting utility functions, constants, or any other values that may be needed individually.
+
+Default Export:----------------------------------------------------------------------------------------------
+Default Export
+With default exports, you can export only a single value from a module. This value is considered the "default" export and can be imported without using curly braces in the import statement.
+
+// math.js
+const divide = (a, b) => a / b;
+export default divide;
+
+// In another module
+import divide from './math.js';
+
+Here's an example of a default export:
+Allows you to export only one value from a module.
+The exported value is considered the "default" export.
+When importing, you can choose any name for the imported value (or even omit it), as it's the only export.
+Useful for exporting classes, functions, or any other value that represents the main functionality of the module.
+Choosing Between Named and Default Exports
+Use named exports when you want to export multiple values from a module or when you need to import specific values by name.
+Use default exports when you want to export a single value that represents the primary purpose of the module, or when you want to provide a convenient way to import that value without specifying its name.
