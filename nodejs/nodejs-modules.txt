@@ -62,3 +62,48 @@ stores all the information about the third-party module that we have installed
 npm install "module_name"
 Examples of Third-Party Module: 
 npm install express
+
+
+
+
+Why We Need Modules in Node.js
+Encapsulation: Modules encapsulate code, preventing global namespace pollution. This isolation helps to avoid conflicts and makes the code easier to manage and maintain.
+Reusability: Modules enable code reuse across different parts of an application or even across different projects. This reduces duplication and makes it easier to apply updates or fixes in one place.
+Maintainability: By breaking down a codebase into smaller, manageable pieces, modules make it easier to understand and maintain the code. Each module can be developed, tested, and debugged independently.
+Dependency Management: Modules help in managing dependencies between different parts of an application. Node.js has a built-in module system with support for package management using npm (Node Package Manager).
+CommonJS Modules
+In Node.js, the CommonJS module system is used by default. It uses require() for loading modules and module.exports or exports for exporting them.
+
+Example of CommonJS Module
+math.js:
+
+// math.js
+function add(a, b) {
+  return a + b;
+}
+
+function subtract(a, b) {
+  return a - b;
+}
+
+module.exports = {
+  add,
+  subtract,
+};
+
+
+// app.js
+const math = require('./math');
+
+const sum = math.add(2, 3);
+const difference = math.subtract(5, 2);
+
+console.log(`Sum: ${sum}`);
+console.log(`Difference: ${difference}`);
+
+
+
+Configuring Node.js for ES6 Modules
+
+Use .mjs Extension: Rename your JavaScript files to use the .mjs extension, or
+Set "type" to "module": Add "type": "module" to your package.json file.
