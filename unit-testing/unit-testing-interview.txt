@@ -1,0 +1,95 @@
+General Unit Testing Questions
+What is unit testing and why is it important?
+Answer: Unit testing involves testing individual components of a software application to ensure that each part functions correctly.
+It is important because it helps catch bugs early in the development process, facilitates code maintenance, and ensures code reliability.
+
+What are the key characteristics of a good unit test?
+Answer: A good unit test should be isolated, repeatable, fast, and should test a single piece of functionality. 
+It should also be easy to read and maintain.
+
+How do you decide what to test in a unit test?
+Answer: Focus on testing the public methods and properties, edge cases, boundary conditions, and any code that performs critical functionality. 
+Avoid testing private methods and implementation details.
+
+TDD and BDD Questions
+What is Test-Driven Development (TDD)?
+
+Answer: TDD is a software development process where you write tests for a new feature before writing the code to implement that feature. 
+The process follows a cycle of writing a test, writing code to pass the test, and then refactoring the code while ensuring that all tests still pass.
+
+Can you explain the Red-Green-Refactor cycle in TDD?
+Answer:
+Red: Write a test that fails.
+Green: Write the minimum amount of code needed to make the test pass.
+Refactor: Improve the code structure and design without changing its behavior, ensuring all tests still pass.
+
+What is Behavior-Driven Development (BDD)?
+Answer: BDD is an extension of TDD that encourages collaboration between developers, QA, and non-technical or business participants. It focuses 
+on the behavior of the application and involves writing tests in a readable language that describes the expected behavior.
+
+How does BDD differ from TDD?
+Answer: BDD emphasizes collaboration and communication between stakeholders and uses natural language constructs (often via Gherkin syntax) to define test cases, whereas TDD is more developer-centric and focuses on the technical aspects of testing.
+Jasmine Questions
+
+What is Jasmine?
+Answer: Jasmine is a behavior-driven development framework for testing JavaScript code. It provides functions to write tests and assertions and comes with a built-in test runner.
+
+How do you structure a Jasmine test suite?
+Answer: A Jasmine test suite is structured using describe blocks to group related tests, and it blocks to define individual test cases. Setup and teardown functions can be provided using beforeEach and afterEach.
+
+What is the purpose of beforeEach and afterEach in Jasmine?
+Answer: beforeEach is executed before each test case in a describe block to set up any necessary conditions or state. afterEach is executed after each test case to clean up any changes made during the test.
+Karma Questions
+
+What is Karma?
+Answer: Karma is a test runner for JavaScript that runs tests on real browsers and reports the results. It is often used in conjunction with testing frameworks like Jasmine, Mocha, and QUnit.
+How do you configure Karma?
+
+Answer: Karma is configured using a configuration file (karma.conf.js). This file specifies details such as the frameworks to use, files to include, browsers to run tests on, and plugins to load.
+
+What are some common Karma plugins and their purposes?
+Answer: Common Karma plugins include karma-jasmine for Jasmine integration, karma-chrome-launcher for running tests in Chrome, and karma-coverage for generating code coverage reports.
+Mocha and Chai Questions
+
+What is Mocha?
+Answer: Mocha is a feature-rich JavaScript test framework that runs on Node.js and in the browser. It provides a flexible structure for writing and running tests, supporting both TDD and BDD styles.
+
+What is Chai?
+Answer: Chai is an assertion library that can be used with any JavaScript testing framework. It provides three styles of assertions: should, expect, and assert.
+
+How do you use Mocha and Chai together?
+Answer: Mocha is used as the test runner to define and execute tests, while Chai is used for making assertions within those tests. Test cases are written using Mocha’s describe and it functions, and assertions are made using Chai’s expect, should, or assert methods.
+Give an example of a simple test case using Mocha and Chai.
+
+Answer:
+javascript
+Copy code
+// math.js
+export const add = (a, b) => a + b;
+
+// math.spec.js
+import { expect } from 'chai';
+import { add } from './math.js';
+
+describe('Math Module', () => {
+  it('should add two numbers correctly', () => {
+    expect(add(2, 3)).to.equal(5);
+  });
+});
+Practical and Scenario-Based Questions
+
+How do you handle asynchronous code in unit tests?
+Answer: In Mocha, you can use the done callback, return a promise, or use async/await to handle asynchronous code. In Jasmine, you can use the done 
+callback or return a promise from the test function. 
+
+What are mocks and stubs, and how do you use them in unit testing?
+Answer: Mocks and stubs are used to simulate the behavior of real objects. Mocks track interactions with the object, while stubs provide predefined 
+responses. Libraries like Sinon.js can be used to create mocks and stubs.
+
+Explain how you would test a function that makes an HTTP request.
+Answer: You can use a mocking library to simulate HTTP requests and responses. For example, with Sinon.js, you can create a fake server and define 
+how it should respond to requests. This allows you to test how your function handles different scenarios without making actual network calls.
+
+What is code coverage and why is it important?
+Answer: Code coverage measures the amount of code that is executed during testing. It is important because it helps identify untested parts of 
+the codebase, ensuring more comprehensive testing and reducing the risk of bugs.
