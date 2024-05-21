@@ -72,6 +72,78 @@ beforeAll(): Called once before all the specification
 afterEach(): Called after each test specification
 afterAll(): Called once after all the specifications.
 
+in the context of unit testing, the terms spy, stub, mock, fake, and dummy 
+are used to describe different types of test doubles. These are objects that
+ replace real components in tests to isolate the functionality being tested. 
+ Each type serves a different purpose and has distinct characteristics. 
+ Here's an explanation of each:
+
+
+ Spy
+A spy is a test double that records how a function or method is called. 
+It keeps track of various interactions, such as the number of times it was 
+called, the arguments it was called with, and the context (this value) in 
+which it was called.
+
+const sinon = require('sinon');
+const obj = {
+  method: (arg) => arg,
+};
+
+const spy = sinon.spy(obj, 'method');
+obj.method(42);
+
+console.log(spy.calledOnce); // true
+console.log(spy.calledWith(42)); // true
+
+
+Stub
+A stub is a test double that replaces a function or method with pre-defined
+ behavior. Unlike spies, stubs can control the behavior of the function they 
+ replace by returning specific values or throwing exceptions.
+
+ const sinon = require('sinon');
+const obj = {
+  method: (arg) => arg,
+};
+
+const stub = sinon.stub(obj, 'method').returns(42);
+
+console.log(obj.method()); // 42
+console.log(stub.calledOnce); // true
+
+
+Mock
+A mock is a type of test double that combines the behavior of both spies 
+and stubs. It not only records interactions but also sets expectations 
+about how the function or method should be used. Mocks are used to verify
+ that the expected interactions happen during the test.
+
+ const sinon = require('sinon');
+const obj = {
+  method: (arg) => arg,
+};
+
+const mock = sinon.mock(obj);
+mock.expects('method').once().withExactArgs(42);
+
+obj.method(42);
+
+mock.verify(); // Verifies that the expectations were met
+
+Fake
+A fake is a fully functional implementation that is used in place of a 
+real component, but it is simpler and suitable only for testing purposes.
+ Fakes can have working implementations that are different from the real 
+ ones but are adequate for testing scenarios.
+
+Summary
+Spy: Records how a function or method is called.
+Stub: Replaces a function or method with pre-defined behavior.
+Mock: Combines spying and stubbing, with built-in verification of expected interactions.
+Fake: A fully functional but simplified version of a real component.
+Dummy: An object that is passed around but not used, typically to satisfy method signatures. 
+
 
 How to run tests------------------------------------------------------------
 
