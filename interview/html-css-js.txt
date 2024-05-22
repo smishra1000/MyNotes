@@ -1,0 +1,25 @@
+variables
+operators
+data types
+function,loop-for--of, for--in
+array,map,filter,reduce,push,slice.splice,indexOf,lastIndexOf,find,findIndex,pop,shift,unshift,split,
+object,method on object-freeze,seal,keys,entries,
+oops
+clourse
+hoisting
+scoping
+this,es6,class,object,static,private member,prototype
+how js works---lexical scope, global execution context,function execution context
+dynamic scope--call apply, bind
+object.define property, property descriptor
+callback,
+localstorage, session storage, fetch call in javascript
+promise
+async await
+promise.all,any,race,
+DOM -- all methods --MediaKeySystemAccess,create append--append child and append
+innerText,innerHtml,textContent
+HTMLCollection Nodelist,event delegation model
+html tag, semantics,head, meta ,styles,display bloack inline position,flex grid, script tag,media query, responsive,
+web accessibility--aria 
+eventloop,settimout function setInterval function,micro,macro task,callstack
