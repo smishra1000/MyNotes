@@ -381,3 +381,127 @@ while event bubbling means propagation is done from child element to ancestor el
 The event capturing occurs followed by event bubbling.
 If {capture: true} ,event capturing will occur else event bubbling will occur.
 Both can be prevented by using the stopPropagation() method.
+
+
+
+--------------------------Array methods------------------------------------
+
+1. push()
+Adds one or more elements to the end of an array and returns the new length of the array.
+let arr = [1, 2, 3];
+arr.push(4); // [1, 2, 3, 4]
+2. pop()
+Removes the last element from an array and returns that element.
+let arr = [1, 2, 3];
+arr.pop(); // 3
+console.log(arr); // [1, 2]
+
+3. shift()
+Removes the first element from an array and returns that element.
+
+let arr = [1, 2, 3];
+arr.shift(); // 1
+console.log(arr); // [2, 3]
+
+4. unshift()
+Adds one or more elements to the beginning of an array and returns the new length of the array.
+
+let arr = [1, 2, 3];
+arr.unshift(0); // 4
+console.log(arr); // [0, 1, 2, 3]
+
+5. slice()
+Returns a shallow copy of a portion of an array into a new array
+ object selected from start to end (end not included).
+ let arr = [1, 2, 3, 4, 5];
+let slicedArr = arr.slice(1, 3); // [2, 3]
+
+6. splice()
+Changes the contents of an array by removing or replacing existing elements 
+and/or adding new elements in place.
+
+let arr = [1, 2, 3, 4, 5];
+arr.splice(2, 1); // [3]
+console.log(arr); // [1, 2, 4, 5]
+
+// Adding elements
+arr.splice(2, 0, 'a', 'b'); // []
+console.log(arr); // [1, 2, 'a', 'b', 4, 5]
+
+7. indexOf()
+Returns the first index at which a given element can be found in the array,
+ or -1 if it is not present.
+
+ let arr = [1, 2, 3, 4, 5];
+let index = arr.indexOf(3); // 2
+let notFound = arr.indexOf(6); // -1
+
+8. lastIndexOf()
+Returns the last index at which a given element can be found in the 
+array, or -1 if it is not present.
+
+let arr = [1, 2, 3, 4, 3, 5];
+let index = arr.lastIndexOf(3); // 4
+
+9. find()
+Returns the value of the first element in the array that satisfies 
+the provided testing function. Otherwise, undefined is returned.
+
+let arr = [1, 2, 3, 4, 5];
+let found = arr.find(element => element > 3); // 4
+
+10. findIndex()
+Returns the index of the first element in the array that satisfies the provided testing 
+function. Otherwise, -1 is returned.
+
+let arr = [1, 2, 3, 4, 5];
+let index = arr.findIndex(element => element > 3); // 3
+
+16. some()
+Tests whether at least one element in the array passes the test implemented by the provided function.
+
+let arr = [1, 2, 3, 4, 5];
+let hasEven = arr.some(element => element % 2 === 0); // true
+
+17. every()
+Tests whether all elements in the array pass the test implemented by the provided function.
+
+let arr = [1, 2, 3, 4, 5];
+let allEven = arr.every(element => element % 2 === 0); // false
+
+18. includes()
+Determines whether an array includes a certain value among its entries, returning true or false as appropriate.
+
+let arr = [1, 2, 3, 4, 5];
+let includesThree = arr.includes(3); // true
+let includesSix = arr.includes(6); // false
+
+19. join()
+Joins all elements of an array into a string and returns this string.
+let arr = ['Hello', 'world'];
+let joined = arr.join(' '); // "Hello world"
+
+20. concat()
+Merges two or more arrays. This method does not change the existing arrays, but instead returns a new array.
+let arr1 = [1, 2, 3];
+let arr2 = [4, 5, 6];
+let concatenated = arr1.concat(arr2); // [1, 2, 3, 4, 5, 6]
+
+21. flat()
+Creates a new array with all sub-array elements concatenated into it recursively up to the specified depth.
+
+22. sort()
+Sorts the elements of an array in place and returns the array
+let arr = [3, 1, 4, 1, 5, 9];
+arr.sort(); // [1, 1, 3, 4, 5, 9]
+
+// Custom sort
+arr.sort((a, b) => a - b); // [1, 1, 3, 4, 5, 9]
+
+const numbers = [9, 3, 12, 11, 40, 28, 5];
+
+const sortedNumbers = numbers.sort();
+console.log(sortedNumbers);
+
+// Output:
+[11, 12, 28, 3, 40, 5, 9];
