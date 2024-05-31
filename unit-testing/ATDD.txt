@@ -51,7 +51,8 @@ Scenario: Successful login
   Then the user should be logged in successfully
 Develop the Feature: The developer implements the login functionality guided by the acceptance test.
 
-Run Acceptance Tests: The acceptance test is executed to verify the implementation. If the test passes, the feature is considered complete.
+Run Acceptance Tests: The acceptance test is executed to verify the 
+implementation. If the test passes, the feature is considered complete.
 
 Refine and Refactor: If the test fails, the team refines the implementation or the test until the acceptance criteria are met.
 

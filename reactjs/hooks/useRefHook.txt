@@ -1,0 +1,39 @@
+useRef(initialValue) is a built-in React hook that accepts one argument 
+as the initial value and returns a reference. A reference is an object
+ having a single property “current”, which can be accessed and changed 
+ (mutated)
+
+
+
+ useRef is most popular for referencing dom elements. All JSX elements 
+ can have an inbuilt ref property using which we can reference dom 
+ elements. (using vanilla JavaScript we would have to use document.querySelector() 
+ etc.).
+
+For example, You need to focus on the input field when the component mounts.
+ To make it work you’ll need to create a reference to the input, assign the 
+ reference to the ref attribute of the input, once the component mounts call 
+ the element.focus() method on the element.
+
+ export default function TextInputWithFocus() {
+  const inputEl = useRef(null);
+
+  useEffect(() => {
+    // `current` points to the mounted text input element
+    inputEl.current.focus();
+  }, []);
+
+  return (
+    <>
+      <input ref={inputEl} type='text' />
+    </>
+  );
+}
+
+
+using useRef() returns a reference object. The reference object has a 
+single property called current, you can use this property to read or 
+update the reference value.
+The reference’s value is persistent between the component re-renders.
+Unlike updating the state, mutating the reference, does not trigger a 
+re-render.
