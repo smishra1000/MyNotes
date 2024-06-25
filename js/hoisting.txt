@@ -1,0 +1,73 @@
+When the JavaScript engine executes the JavaScript code, it creates the 
+global execution context. The global execution context has two phases:
+Creation
+Execution
+
+
+During the creation phase, the JavaScript engine moves the variable and 
+function declarations to the top of your code. This is known as hoisting 
+in JavaScript.
+
+Variable hoisting
+Variable hoisting means the JavaScript engine moves the variable
+ declarations to the top of the script.
+
+ Variable hoisting with var
+When the interpreter hoists a variable declared with var, it initializes 
+its value to undefined. The first line of code below will output undefined:
+
+console.log(foo); // undefined
+
+var foo = 'bar';
+
+console.log(foo); // "bar"
+
+Variable hoisting with let and const
+Variables declared with let and const are hoisted but not initialized with a 
+default value. Accessing a let or const variable before it's declared will 
+result in a ReferenceError:
+
+console.log(foo); // Uncaught ReferenceError: Cannot access 'foo' before 
+initialization
+
+let foo = 'bar';  // Same behavior for variables declared with const
+
+The temporal dead zone
+The reason that we get a reference error when we try to access a let or 
+const variable before its declaration is because of the temporal dead zone
+ (TDZ).
+
+
+ Function hoisting
+Like variables, the JavaScript engine also hoists the function declarations.
+ This means that the JavaScript engine also moves the function declarations 
+ to the top of the script
+
+
+ Function Hoisting vs Variable Hoisting
+Function declarations are hoisted before variable declarations. This means 
+that if you have both a variable and a function with the same name, the 
+function declaration will take precedence.
+
+(function() {
+	console.log('test is: ', test);
+    var test =5;
+    function test() {}
+    console.log('test is: ', test);
+})();
+variable assignment takes precedence over function declaration.
+
+(function() {
+	console.log('test is: ', test);
+    var test;
+    function test() {}
+    console.log('test is: ', test);
+})();
+
+function declaration takes precedence over variable declaration.
+
+The JavaScript engine doesn’t hoist the function expressions and arrow functions. 
+
+https://skillupwards.com/blog/understanding-javascript-hoisting-variables-and-functions
+https://www.javascripttutorial.net/javascript-hoisting/
+https://www.freecodecamp.org/news/javascript-execution-context-and-hoisting/
