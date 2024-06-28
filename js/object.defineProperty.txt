@@ -1,0 +1,124 @@
+What is object defineProperty () used for?
+Object.defineProperty() allows developers to add or modify properties on 
+objects
+
+Object.defineProperty(obj, key, descriptor);
+
+obj (object) is the object you're working with, the place where you want to
+ make changes.
+key (string) is the name or title of the property you want to create or modify. It's like the label on a box.
+descriptor (propertyDescriptorObject) is the property descriptor that holds 
+the various property flags we discussed earlier.
+
+
+Value
+The value property flag is used to assign a specific value to the property 
+being defined or modified. This flag is applicable to data descriptors,
+ and it represents the initial value associated with the property.
+
+const obj = {};
+Object.defineProperty(obj, 'exampleValue', {
+  value: 'initialValue'
+});
+console.log(obj.exampleValue); // Output: initialValue
+
+
+
+Writable
+The writable property flag determines whether the value of the property can 
+be changed using an assignment operator. If set to false, attempts to modify
+ the property's value will result in an error.
+
+const obj = {};
+Object.defineProperty(obj, 'readOnlyProperty', {
+  value: 'immutableValue',
+  writable: false
+});
+obj.readOnlyProperty = 'newValue';
+console.log(obj.readOnlyProperty); //immutableValue
+
+
+Enumerable
+The enumerable property flag controls whether the property will be included 
+during enumeration of the object's properties. If set to false, the property
+ will be skipped in operations like for...in and Object.keys().
+
+
+
+ const obj = {
+  visibleProperty: 'visibleValue',
+  hiddenProperty: 'hiddenValue',
+};
+
+Object.defineProperty(obj, 'hiddenProperty', {
+  enumerable: false,
+});
+
+// Enumerate only enumerable properties
+console.log(Object.keys(obj)); // Output: ['visibleProperty']
+
+// looping over object
+for(let key in obj){
+  console.log(key); // visibleProperty
+}
+
+// Check if property is directly on the object
+console.log(obj.hasOwnProperty('visibleProperty')); // Output: true
+console.log(obj.hasOwnProperty('hiddenProperty'));  // Output: true, despite being non-enumerable
+
+// Check if property exists (including in prototype chain)
+console.log('visibleProperty' in obj); // Output: true
+console.log('hiddenProperty' in obj);  // Output: true, despite being non-enumerable
+
+
+
+Get and Set
+The get and set property flags are used to define accessor properties, 
+allowing custom getter and setter functions for a property.
+
+const obj = {
+  _value: 0
+};
+Object.defineProperty(obj, 'value', {
+    get(){
+        return this._value;
+    },
+    set(newValue) {
+        if (newValue >= 0) {
+          this._value = newValue;
+        } else {
+          console.error('Invalid value. Please provide a non-negative number.');
+        }
+    },
+    enumerable:false
+});
+obj.value = 42;
+console.log(obj); // Output: { _value: 42 }
+
+obj.value = -1; // Output: Invalid value. Please provide a non-negative number.
+
+
+
+Configurable
+This flag controls whether 
+property can be deleted from the object and whether and whether 
+we’re allowed to tweak its attributes (except for value and writable)
+
+
+const obj = {};
+
+// Set configurable to false, making the property non-deletable
+// Set enumerable to true, allowing the property to show up during enumeration
+Object.defineProperty(obj, 'property', {
+    value: 'value',
+    configurable: false,
+    enumerable: true
+});
+
+console.log(obj); // { property: 'value' }
+
+// Attempt to delete the 'property' from the object
+// Since configurable is set to false, deletion will not succeed
+delete obj.property;
+
+console.log(obj); // { property: 'value' }

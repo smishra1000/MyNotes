@@ -1,0 +1,78 @@
+1. Object Literal 
+
+const sampleObjectLiteral = {
+  property1: 'value1',
+  property2: 'value2'
+};
+
+// Display all property descriptors
+for (const key in sampleObjectLiteral) {
+  console.log(`${key}: `, Object.getOwnPropertyDescriptor(sampleObjectLiteral, key));
+}
+
+2. Constructor function 
+
+function SampleConstructor() {
+  this.property1 = 'value1';
+  this.property2 = 'value2';
+}
+
+const sampleConstructorObj = new SampleConstructor();
+
+// Display all property descriptors
+for (const key in sampleConstructorObj) {
+  console.log(`${key}: `, Object.getOwnPropertyDescriptor(sampleConstructorObj, key));
+}
+
+
+
+3. Object.create 
+
+const sampleProto = {
+  property1: 'value1',
+  property2: 'value2'
+};
+
+const sampleObjectCreate = Object.create(sampleProto);
+
+// Display all property descriptors
+for (const key in sampleObjectCreate) {
+  console.log(`${key}: `, Object.getOwnPropertyDescriptor(sampleObjectCreate, key));
+}
+
+
+
+4. new Object 
+
+const sampleObjectNew = new Object();
+sampleObjectNew.property1 = 'value1';
+sampleObjectNew.property2 = 'value2';
+
+// Display all property descriptors
+for (const key in sampleObjectNew) {
+  console.log(`${key}: `, Object.getOwnPropertyDescriptor(sampleObjectNew, key));
+}
+
+
+
+5. Object.assign 
+
+const sampleObjectAssign = Object.assign({}, {
+  property1: 'value1',
+  property2: 'value2'
+});
+
+// Display all property descriptors
+for (const key in sampleObjectAssign) {
+  console.log(`${key}: `, Object.getOwnPropertyDescriptor(sampleObjectAssign, key));
+}
+
+
+
+Notes-------------You're correct; Object.create() creates a new object with 
+the specified prototype object and does not directly add properties to the 
+newly created object. Instead, it sets the prototype of the new object to 
+the specified object.
+Here's the reason why Object.getOwnPropertyDescriptors() for an object
+ created with Object.create() doesn't display property descriptors as 
+ expected:

@@ -15,7 +15,7 @@ Variable hoisting means the JavaScript engine moves the variable
  Variable hoisting with var
 When the interpreter hoists a variable declared with var, it initializes 
 its value to undefined. The first line of code below will output undefined:
-
+ 
 console.log(foo); // undefined
 
 var foo = 'bar';
