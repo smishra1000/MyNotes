@@ -1,0 +1,25 @@
+prototype allows you to add new properties and methods to arrays.
+prototype is a property available with all JavaScript objects.
+
+JavaScript Array length
+The length property returns the length (size) of an array:
+
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+let size = fruits.length;
+
+JavaScript Array join()
+The join() method also joins all array elements into a string.
+
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+console.log(fruits.join(" * "));
+
+JavaScript Array pop()
+The pop() method removes the last element from an array:
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.pop();
+
+JavaScript Array push()
+The push() method adds a new element to an array (at the end):
+
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.push("Kiwi");

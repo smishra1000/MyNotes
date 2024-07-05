@@ -122,3 +122,39 @@ console.log(obj); // { property: 'value' }
 delete obj.property;
 
 console.log(obj); // { property: 'value' }
+
+
+
+
+"use strict";
+
+let obj = {};
+
+Object.defineProperty(obj, 'myProperty', {
+    value: 'Hello, world!',
+    writable: false, // cannot be changed
+    configurable: false, // cannot be deleted or changed
+    enumerable: false // will not show up in for-in loop
+});
+
+console.log(obj.myProperty); // Output: Hello, world!
+
+// In strict mode, attempting to write to a non-writable property will throw an error
+try {
+    obj.myProperty = 'New Value';
+} catch (e) {
+    console.log(e.message); // Output: Cannot assign to read only property 'myProperty' of object '#<Object>'
+}
+
+for (let key in obj) {
+    console.log(key); // Will not log anything because myProperty is not enumerable
+}
+
+// In strict mode, attempting to delete a non-configurable property will throw an error
+try {
+    delete obj.myProperty;
+} catch (e) {
+    console.log(e.message); // Output: Cannot delete property 'myProperty' of #<Object>
+}
+
+console.log(obj.myProperty); // Output: Hello, world!
