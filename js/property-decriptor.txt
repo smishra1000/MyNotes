@@ -76,3 +76,69 @@ the specified object.
 Here's the reason why Object.getOwnPropertyDescriptors() for an object
  created with Object.create() doesn't display property descriptors as 
  expected:
+
+
+
+
+A property descriptor in JavaScript is an object that describes the attributes
+ of a property. 
+ There are two main types of property descriptors: data descriptors and 
+ accessor descriptors.
+
+ Data Descriptor
+A data descriptor is used for properties that have a value and includes the 
+following attributes:
+
+value: The value associated with the property.
+writable: A boolean indicating if the value of the property can be changed.
+enumerable: A boolean indicating if the property will be listed in a for...in loop and Object.keys.
+configurable: A boolean indicating if the property can be deleted or if its attributes can be modified.
+
+
+Accessor Descriptor
+An accessor descriptor is used for properties defined by getter and setter 
+functions and includes the following attributes:
+
+get: A function that serves as a getter for the property, or undefined if there is no getter.
+set: A function that serves as a setter for the property, or undefined if there is no setter.
+enumerable: A boolean indicating if the property will be listed in a for...in loop and Object.keys.
+configurable: A boolean indicating if the property can be deleted or if its attributes can be modified.
+
+
+Example: Data Descriptor
+Here's an example of using a data descriptor with Object.defineProperty:
+let obj = {};
+
+Object.defineProperty(obj, 'myProperty', {
+    value: 'Hello, world!',
+    writable: true, // The property can be changed
+    enumerable: true, // The property will show up in a for-in loop
+    configurable: true // The property can be deleted or changed
+});
+
+console.log(obj.myProperty); // Output: Hello, world!
+
+
+
+Example: Accessor Descriptor
+Here's an example of using an accessor descriptor:
+let obj = {};
+let value = 10;
+
+Object.defineProperty(obj, 'myProperty', {
+    get: function() {
+        return value;
+    },
+    set: function(newValue) {
+        value = newValue;
+    },
+    enumerable: true, // The property will show up in a for-in loop
+    configurable: true // The property can be deleted or changed
+});
+
+console.log(obj.myProperty); // Output: 10
+obj.myProperty = 20;
+console.log(obj.myProperty); // Output: 20
+
+Property descriptors allow you to define and control the behavior of properties in objects
+
