@@ -1,0 +1,27 @@
+Currying in JavaScript is a functional programming technique that involves
+ transforming a function that takes multiple arguments into a sequence of functions, 
+ each taking a single argument. This technique is particularly useful in JavaScript 
+ due to its support for higher-order functions and closures,
+
+ function add(x) {
+    return function (y) {
+        return x + y;
+    };
+}
+const sum = add(5)(3);
+console.log(sum);
+
+
+Higher-order functions: Currying relies on the concept of higher-order functions,
+ where functions can accept other functions as arguments and return functions as 
+ values.
+
+
+Closure: Currying in JavaScript utilizes closures to capture the state of the outer 
+function, allowing inner functions to access variables defined in their lexical 
+scope even after the outer function has finished executing.
+
+
+Flexibility: Curried functions offer flexibility by allowing arguments to be
+ passed incrementally, making them suitable for scenarios where certain arguments 
+ may be provided later.
