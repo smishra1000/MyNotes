@@ -9,7 +9,7 @@ const memoizedAdd = () => {
   return (n) => {
     if (n in cache) {
       console.log('Fetching from cache');
-      return cache[n];
+      return cache[n];   
     }
     else {
       console.log('Calculating result');
