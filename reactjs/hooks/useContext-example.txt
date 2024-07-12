@@ -1,0 +1,84 @@
+import React, { createContext, useState } from 'react';
+
+// Create the AgeContext
+const AgeContext = createContext();
+
+// Create a provider component
+export const AgeProvider = ({ children }) => {
+  const [age, setAge] = useState(30); // Initial age value
+
+  const incrementAge = () => setAge(prevAge => prevAge + 1);
+  const decrementAge = () => setAge(prevAge => prevAge - 1);
+
+  return (
+    <AgeContext.Provider value={{ age, incrementAge, decrementAge }}>
+      {children}
+    </AgeContext.Provider>
+  );
+};
+
+export default AgeContext;
+
+
+
+2> create AppDisplay1 component 
+import React, { useContext } from 'react';
+import AgeContext from './AgeContext';
+
+const AgeDisplay1 = () => {
+  const { age, incrementAge, decrementAge } = useContext(AgeContext);
+  return (
+    <div>
+      <p>Component 1 - Age: {age}</p>
+      <button onClick={incrementAge}>Increment Age</button>
+      <button onClick={decrementAge}>Decrement Age</button>
+    </div>
+  );
+};
+
+export default AgeDisplay1;
+
+
+import React, { useContext } from 'react';
+import AgeContext from './AgeContext';
+
+const AgeDisplay2 = () => {
+  const { age, incrementAge, decrementAge } = useContext(AgeContext);
+  return (
+    <div>
+      <p>Component 2 - Age: {age}</p>
+      <button onClick={incrementAge}>Increment Age</button>
+      <button onClick={decrementAge}>Decrement Age</button>
+    </div>
+  );
+};
+
+export default AgeDisplay2;
+
+
+// app.js 
+
+import React from 'react';
+import { AgeProvider } from './AgeContext';
+import AgeDisplay1 from './AgeDisplay1';
+import AgeDisplay2 from './AgeDisplay2';
+
+const App = () => {
+  return (
+    <AgeProvider>
+      <div>
+        <h1>Age Context Example</h1>
+        <AgeDisplay1 />
+        <AgeDisplay2 />
+      </div>
+    </AgeProvider>
+  );
+};
+
+export default App;
+
+AgeContext.js: The AgeProvider now includes incrementAge and decrementAge functions to modify the age state.
+AgeDisplay1.js and AgeDisplay2.js: Both components consume the age, incrementAge, and decrementAge values from the context and provide buttons to modify the age.
+App.js: The components are wrapped in the AgeProvider to ensure they have access to the age context.
+
+
