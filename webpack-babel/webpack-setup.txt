@@ -1,0 +1,160 @@
+Webpack
+Webpack is a module bundler for JavaScript applications. It takes modules with dependencies 
+and generates static assets representing those modules. Webpack can handle not just 
+JavaScript files but also other resources like CSS, images, fonts, and more through 
+various loaders and plugins.
+
+Key features of Webpack:
+
+Module Bundling: Combines multiple files into a single bundle or multiple bundles.
+Code Splitting: Splits code into various bundles that can be loaded on demand or in parallel.
+Loaders: Transforms files before they are added to the dependency graph (e.g., CSS, SCSS, images).
+Plugins: Extends Webpack’s functionality (e.g., HTML generation, file compression).
+
+
+Code Splitting
+Code Splitting is a feature of Webpack that allows you to split your code into 
+various bundles which can be loaded on demand. This can improve the performance
+ of your application by reducing the size of the initial bundle and loading additional
+  code only when needed.
+
+Types of Code Splitting:
+
+Entry Points: Manually define split points in the Webpack configuration.
+Dynamic Imports: Use import() to dynamically load modules when needed.
+Vendor Splitting: Separate vendor (third-party) libraries from application code.
+
+project/
+│
+├── src/
+│   ├── css/
+│   │   ├── main.css
+│   │   └── styles.scss
+│   │
+│   ├── js/
+│   │   ├── index.js
+│   │   └── app.js
+│   │
+│   └── index.html
+│
+├── package.json
+├── webpack.config.js
+└── .gitignore
+
+
+1> npm init -y
+2> npm install --save-dev webpack webpack-cli webpack-dev-server style-loader 
+    css-loader sass-loader node-sass mini-css-extract-plugin html-webpack-plugin
+sr/index.html -------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webpack Project</title>
+</head>
+<body>
+    <h1>Hello, Webpack!</h1>
+</body>
+</html>
+
+Step 4: Create Webpack Configuration 
+webpack-config.js----------------------------------------------------------
+
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = {
+    entry: './src/js/index.js',
+    output: {
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist'),
+        clean: true, // Ensures the 'dist' folder is cleaned before each build
+    },
+    module: {
+        rules: [
+            {
+                test: /\.css$/i,
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+            },
+            {
+                test: /\.scss$/i,
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+            },
+        ],
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: 'main.css',
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/index.html', // Template file
+        }),
+    ],
+    devServer: {
+        contentBase: path.join(__dirname, 'dist'),
+        compress: true,
+        port: 9000,
+    },
+};
+
+Step 6: Create JavaScript Files
+Create src/js/index.js with the following content:
+import '../css/main.css';
+import '../css/styles.scss';
+import './app';
+
+Create src/js/app.js with the following content:
+
+console.log('Hello from app.js!');
+
+
+Step 7: Create CSS and SCSS Files
+Create src/css/main.css with the following content:
+body {
+    background-color: lightblue;
+}
+
+
+Create src/css/styles.scss with the following content:
+
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+
+body {
+    font: 100% $font-stack;
+    color: $primary-color;
+}
+
+
+Step 8: Configure .gitignore
+Create .gitignore in the root of your project directory with the following content:
+node_modules
+dist
+
+Step 9: Build and Serve
+Add the following scripts to your package.json:
+
+"scripts": {
+    "start": "webpack serve --open",
+    "build": "webpack --mode production"
+}
+
+Run the development server:
+npm start
+
+
+
+
+
+Tree Shaking
+Tree Shaking is a term commonly used in the JavaScript context for dead code 
+elimination. It relies on the static structure of ES6 module syntax
+ (i.e., import and export). Tree shaking means that unused code is not included 
+ in the final bundle, which can significantly reduce the size of the output file.
+
+Tree Shaking in Webpack:
+
+Requires ES6 module syntax.
+Relies on the optimization property in Webpack’s configuration.
