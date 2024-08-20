@@ -7,7 +7,7 @@ const sampleObjectLiteral = {
 
 // Display all property descriptors
 for (const key in sampleObjectLiteral) {
-  console.log(`${key}: `, Object.getOwnPropertyDescriptor(sampleObjectLiteral, key));
+  console.log(`${key}: `, Object.  (sampleObjectLiteral, key));
 }
 
 2. Constructor function 

@@ -14,7 +14,7 @@ Plugins: Extends Webpack’s functionality (e.g., HTML generation, file compress
 
 Code Splitting
 Code Splitting is a feature of Webpack that allows you to split your code into 
-various bundles which can be loaded on demand. This can improve the performance
+various bundles which can be loaded on d  emand. This can improve the performance
  of your application by reducing the size of the initial bundle and loading additional
   code only when needed.
 

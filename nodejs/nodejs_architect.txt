@@ -1,0 +1,41 @@
+libUV:
+
+Gives access to the operating system to perform tasks related to the 
+filesystem or time scheduled tasks etc.
+
+libuv is a multi-platform support library with a focus on asynchronous 
+I/O. It was primarily developed for use by Node.js,
+
+
+V8:
+
+Compiles and executes JavaScript source code, handles memory allocation 
+for objects, and garbage collects objects it no longer needs.
+
+As of now V8 has moved away from JIT (Just In Time) compiler to
+ interpreted
+
+These are the main functionalities of the V8 engine :-
+
+Compiles and executes JS code
+Handling call stack
+Managing memory allocation for objects
+Garbage collection — of objects which are no longer in use
+Provide all the data types, operators, objects and functions
+
+node.js:
+
+A JavaScript runtime built on Chrome’s V8 JavaScript engine.
+
+The thing is that in the early days of web, Javascript was intended to
+ run only on the browser for client-side interactions. But slowly and
+  gradually (after Google’s v8 engine) people started using Javascript 
+  out of the browser and to replicate the browser environment outside 
+  an actual browser NodeJS was released.
+
+NodeJS is proficient with internet fundamentals such as TCP, HTTP etc. 
+which made it a good choice for writing server-side code as well.
+
+
+
+https://dev.to/lydiahallie/javascript-visualized-the-javascript-engine-4cdf

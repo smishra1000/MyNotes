@@ -1,7 +1,10 @@
-// The Promise.all() method accepts a list of promises and returns a new promise that resolves to an array of results of the input promises if all the input promises are resolved, or rejected with an error of the first rejected promise.
+// The Promise.all() method accepts a list of promises and returns a new promise that 
+//resolves to an array of results of the input promises if all the input promises are 
+//resolved, or rejected with an error of the first rejected promise.
 // Use the Promise.all() method to aggregate results from multiple asynchronous operations.
 
-// The Promise.all() method returns a single promise that resolves when all the input promises have been resolved. The returned promise resolves to an array of the results of the input promises:
+// The Promise.all() method returns a single promise that resolves when all the 
+//input promises have been resolved. The returned promise resolves to an array of the results of the input promises:
 
 const p1 = new Promise((resolve, reject) => {
     setTimeout(() => {

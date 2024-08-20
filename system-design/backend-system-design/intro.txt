@@ -24,3 +24,11 @@ Logging & Monitoring
 API
 Security Principles
 One Project with all topics
+
+
+
+https://dev.to/kumarkalyan/top-5-github-repositories-to-achieve-system-design-mastery-27n4
+
+https://github.com/karanpratapsingh/system-design
+
+https://github.com/ashishps1/awesome-system-design-resources?tab=readme-ov-file
