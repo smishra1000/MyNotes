@@ -1,0 +1,86 @@
+1. process.nextTick:
+When it runs: It schedules a callback function to be run immediately after
+ the current operation completes, before any I/O events (like file reading
+  or network requests) or timers are handled.
+Use case: It's often used when you need to ensure that a function runs 
+after the current code finishes but before any I/O tasks or timers.
+
+
+process.nextTick(() => {
+  console.log('This will run after the current function but before any I/O or timers.');
+});
+console.log('This runs first');
+
+
+2. setImmediate:
+When it runs: It schedules a callback to be run on the next iteration of 
+the event loop, after I/O events and timers.
+Use case: Use setImmediate when you want to execute a function after I/O
+ events or other tasks in the event loop.
+
+ setImmediate(() => {
+  console.log('This will run after I/O events and timers.');
+});
+console.log('This runs first');
+
+Key Difference:
+process.nextTick runs before setImmediate because it executes at the end
+ of the current operation, while setImmediate runs in the next cycle of 
+ the event loop, after I/O operations.
+
+
+
+ const fs = require('fs');
+
+// Read a file asynchronously
+fs.readFile('example.txt', 'utf8', (err, data) => {
+  if (err) throw err;
+
+  console.log('File reading operation is complete');
+
+  // This will be executed before the I/O event (before the file read callback ends)
+  process.nextTick(() => {
+    console.log('Process.nextTick - This runs before setImmediate');
+  });
+
+  // This will be executed after the I/O event (after the file read callback ends)
+  setImmediate(() => {
+    console.log('SetImmediate - This runs after process.nextTick');
+  });
+});
+
+console.log('This runs before file reading operation');
+
+
+
+
+Event Loop----------------------------------
+
+Call Stack: Manages synchronous function execution.
+Microtask Queue: Handles high-priority tasks (like Promise callbacks) that are executed before any macrotask.
+Macrotask Queue: Handles lower-priority tasks (like setTimeout) that are executed in the next event loop iteration.
+Event Loop: Coordinates the execution by continuously checking the call stack, microtask queue, and macrotask queue.
+
+
+
+console.log('Start');  // Call Stack
+
+setTimeout(() => {
+  console.log('setTimeout');  // Macrotask Queue
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log('Promise.then');  // Microtask Queue
+});
+
+console.log('End');  // Call Stack
+
+
+
+
+Event Loop
+What it is: The event loop is the mechanism that continuously checks the call stack and the task queues, deciding what code to execute next.
+How it works:
+Check Call Stack: The event loop first checks if the call stack is empty.
+Process Microtasks: If the call stack is empty, the event loop checks the microtask queue and processes all microtasks.
+Process Macrotasks: After all microtasks are handled, the event loop checks the macrotask queue and processes the next task.

@@ -1,0 +1,23 @@
+// math.js
+export function add(a, b) {
+  return a + b;
+}
+
+export function subtract(a, b) {
+  return a - b;
+}
+
+index.js
+This file will import and use the functions from math.js:
+
+// index.js
+import { add, subtract } from './math.js';
+
+const num1 = 10;
+const num2 = 5;
+
+console.log(`The sum of ${num1} and ${num2} is:`, add(num1, num2));
+console.log(`The difference between ${num1} and ${num2} is:`, subtract(num1, num2));
+
+ES6 Modules: You used import and export to manage module dependencies.
+package.json: The "type": "module" field enabled ES6 module syntax in your Node.js project.

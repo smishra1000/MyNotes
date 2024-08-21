@@ -93,3 +93,40 @@ fs.mkdir(path.join(__dirname, 'test'),
         }
         console.log('Directory created successfully!');
     });
+
+
+
+--------------------------------**********Using Promise **************************8
+
+const fs = require('fs').promises;
+
+async function fileOperations() {
+  const filePath = './example.txt';
+  
+  try {
+    // Write data to the file
+    await fs.writeFile(filePath, 'Hello, World!', 'utf8');
+    console.log('File written successfully');
+
+    // Read the data from the file
+    const data = await fs.readFile(filePath, 'utf8');
+    console.log('File content:', data);
+
+    // Append data to the file
+    await fs.appendFile(filePath, '\nAppended text.', 'utf8');
+    console.log('Data appended successfully');
+
+    // Read the updated data from the file
+    const updatedData = await fs.readFile(filePath, 'utf8');
+    console.log('Updated file content:', updatedData);
+
+    // Delete the file
+    await fs.unlink(filePath);
+    console.log('File deleted successfully');
+    
+  } catch (error) {
+    console.error('An error occurred:', error);
+  }
+}
+
+fileOperations();

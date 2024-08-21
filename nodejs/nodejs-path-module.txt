@@ -14,3 +14,61 @@ console.log(path2)
 // Joining with zero-length paths 
 path3 = path.join("users", "", "", "index.html"); 
 console.log(path3)
+
+The `path`` module in Node.js provides utilities for working with file 
+and directory paths. It helps in handling and transforming file paths 
+in a way that works across different operating systems, whether it's
+ Windows, macOS, or Linux.
+
+
+1. path.basename(path[, ext])
+Description: Returns the last portion of a path, typically the file name.
+Parameters:
+
+
+path: The file path.
+ext (optional): An extension to remove from the result.
+ const path = require('path');
+
+const filePath = '/user/local/bin/file.txt';
+console.log(path.basename(filePath)); // Output: file.txt
+console.log(path.basename(filePath, '.txt')); // Output: file
+
+
+2. path.dirname(path)
+Description: Returns the directory name of a path.
+
+const path = require('path');
+
+const filePath = '/user/local/bin/file.txt';
+console.log(path.dirname(filePath)); // Output: /user/local/bin
+
+
+3. path.extname(path)
+Description: Returns the extension of the file.
+
+const path = require('path');
+
+const filePath = '/user/local/bin/file.txt';
+console.log(path.extname(filePath)); // Output: .txt
+
+4. path.join([...paths])
+Description: Joins multiple segments into a single path.
+
+const path = require('path');
+
+const joinedPath = path.join('/user', 'local', 'bin/file.txt');
+console.log(joinedPath); // Output: /user/local/bin/file.txt
+
+
+------------------------------------------------*****************8
+
+const path = require('path');
+
+const filePath = '/user/local/bin/file.txt';
+console.log('Base name:', path.basename(filePath));         // Output: file.txt
+console.log('Directory name:', path.dirname(filePath));     // Output: /user/local/bin
+console.log('File extension:', path.extname(filePath));     // Output: .txt
+console.log('Normalized path:', path.normalize('/user//local/bin/../lib')); // Output: /user/local/lib
+console.log('Absolute path:', path.resolve('bin/file.txt')); // Output: Absolute path based on current working directory
+console.log('Path object:', path.parse(filePath)); 
