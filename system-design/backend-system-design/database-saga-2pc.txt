@@ -1,0 +1,236 @@
+1. Two-Phase Commit (2PC)
+
+Two-Phase Commit is a protocol used to ensure a distributed transaction is 
+either fully committed or fully rolled back across multiple systems.
+
+How 2PC Works:
+Phase 1: Prepare
+
+The coordinator service sends a prepare message to all participating services.
+Each service performs the necessary checks and either votes to commit or abort.
+The services lock the resources needed for the transaction but don't actually commit yet.
+Phase 2: Commit
+
+If all services vote to commit, the coordinator sends a commit message.
+If any service votes to abort, the coordinator sends a rollback message.
+Services then either commit or rollback their local transaction based on the coordinator's decision.
+Example: 2PC in Node.js Microservices
+Suppose we have a Checkout Service and a Payment Service, each with its own MongoDB database.
+
+Checkout Service (checkoutService.js):
+
+const mongoose = require('mongoose');
+const eventBus = require('./eventBus');
+
+async function prepareOrder(orderData) {
+    // Phase 1: Prepare
+    const session = await mongoose.startSession();
+    session.startTransaction();
+
+    try {
+        // Simulate checking stock, etc.
+        const order = new Order(orderData);
+        await order.save({ session });
+        
+        // Vote to commit
+        await eventBus.publish('OrderPrepared', { orderId: order._id });
+        return session;
+    } catch (error) {
+        await session.abortTransaction();
+        throw error;
+    }
+}
+
+async function commitOrder(session) {
+    // Phase 2: Commit
+    await session.commitTransaction();
+    session.endSession();
+}
+
+async function rollbackOrder(session) {
+    // Rollback transaction
+    await session.abortTransaction();
+    session.endSession();
+}
+
+module.exports = { prepareOrder, commitOrder, rollbackOrder };
+
+Payment Service (paymentService.js):
+
+const mongoose = require('mongoose');
+const eventBus = require('./eventBus');
+
+async function preparePayment(orderId, paymentData) {
+    const session = await mongoose.startSession();
+    session.startTransaction();
+
+    try {
+        // Simulate payment processing
+        const payment = new Payment({ orderId, ...paymentData });
+        await payment.save({ session });
+
+        await eventBus.publish('PaymentPrepared', { paymentId: payment._id });
+        return session;
+    } catch (error) {
+        await session.abortTransaction();
+        throw error;
+    }
+}
+
+async function commitPayment(session) {
+    await session.commitTransaction();
+    session.endSession();
+}
+
+async function rollbackPayment(session) {
+    await session.abortTransaction();
+    session.endSession();
+}
+
+module.exports = { preparePayment, commitPayment, rollbackPayment };
+
+Coordinator Service (coordinator.js):
+
+
+const { prepareOrder, commitOrder, rollbackOrder } = require('./checkoutService');
+const { preparePayment, commitPayment, rollbackPayment } = require('./paymentService');
+
+async function processTransaction(orderData, paymentData) {
+    try {
+        // Phase 1: Prepare
+        const orderSession = await prepareOrder(orderData);
+        const paymentSession = await preparePayment(orderData.orderId, paymentData);
+
+        // Phase 2: Commit
+        await commitOrder(orderSession);
+        await commitPayment(paymentSession);
+        
+        console.log('Transaction committed');
+    } catch (error) {
+        // Rollback in case of error
+        await rollbackOrder(orderSession);
+        await rollbackPayment(paymentSession);
+        
+        console.error('Transaction aborted:', error);
+    }
+}
+
+
+Limitations of 2PC:
+
+Blocking: Resources are locked until the transaction is completed, potentially leading to deadlocks.
+Single Point of Failure: If the coordinator fails, the whole transaction may remain in limbo.
+Performance: Slower due to multiple round trips between services.
+
+
+
+---------------------------------------------------SAGA------------------------------------------
+
+
+
+
+2. Saga Pattern
+The Saga Pattern is a sequence of local transactions where each step is completed independently. If any step fails, compensating transactions are invoked to undo the effects of previous steps.
+
+How Saga Works:
+Choreography: Each service listens for events and performs local transactions. If a failure occurs, the service triggers compensating actions.
+Orchestration: A central orchestrator coordinates the sequence of steps, including compensation if necessary.
+Example: Saga Pattern in Node.js Microservices
+Let’s use the same Checkout Service and Payment Service but implement the Saga pattern.
+
+Checkout Service (checkoutService.js):
+
+const mongoose = require('mongoose');
+const eventBus = require('./eventBus');
+
+async function createOrder(orderData) {
+    const order = new Order(orderData);
+    await order.save();
+
+    await eventBus.publish('OrderCreated', { orderId: order._id });
+    return order;
+}
+
+async function cancelOrder(orderId) {
+    // Compensating transaction to cancel order
+    await Order.deleteOne({ _id: orderId });
+}
+
+eventBus.on('PaymentFailed', async ({ orderId }) => {
+    await cancelOrder(orderId);
+    console.log(`Order ${orderId} canceled due to payment failure`);
+});
+
+module.exports = { createOrder, cancelOrder };
+
+Payment Service (paymentService.js):
+
+
+const mongoose = require('mongoose');
+const eventBus = require('./eventBus');
+
+async function processPayment(orderId, paymentData) {
+    try {
+        const payment = new Payment({ orderId, ...paymentData });
+        await payment.save();
+
+        await eventBus.publish('PaymentProcessed', { paymentId: payment._id });
+    } catch (error) {
+        await eventBus.publish('PaymentFailed', { orderId });
+        throw error;
+    }
+}
+
+module.exports = { processPayment };
+
+
+Notification Service (notificationService.js):
+const eventBus = require('./eventBus');
+
+eventBus.on('PaymentProcessed', async ({ paymentId }) => {
+    console.log(`Payment ${paymentId} processed successfully, sending notification`);
+    // Implement notification logic here
+});
+
+eventBus.on('OrderCreated', async ({ orderId }) => {
+    console.log(`Order ${orderId} created, awaiting payment`);
+});
+
+
+Coordinator (Orchestration) Example (sagaCoordinator.js):
+
+const { createOrder } = require('./checkoutService');
+const { processPayment } = require('./paymentService');
+
+async function startSaga(orderData, paymentData) {
+    try {
+        const order = await createOrder(orderData);
+        await processPayment(order._id, paymentData);
+        console.log('Saga completed successfully');
+    } catch (error) {
+        console.error('Saga failed:', error);
+    }
+}
+
+module.exports = { startSaga };
+
+
+Advantages of Saga:
+
+No Blocking: Unlike 2PC, Saga doesn’t lock resources, making it more scalable.
+Failure Handling: If a step fails, compensating transactions handle the rollback.
+Asynchronous: Can be implemented asynchronously, reducing coupling between services.
+Drawbacks of Saga:
+
+Complexity: Handling compensations for every step can be complex.
+Eventual Consistency: Unlike 2PC, data consistency across services is eventual, not immediate.
+
+
+Summary:
+2PC is suitable for scenarios where strong consistency is crucial, but it can be slow and prone to blocking.
+Saga Pattern is better for distributed microservices, providing a more scalable and fault-tolerant approach, 
+though it requires careful handling of compensations.
+
+
+
+
