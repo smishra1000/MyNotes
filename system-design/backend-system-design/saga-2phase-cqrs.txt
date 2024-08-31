@@ -1,0 +1,71 @@
+1. Saga Pattern
+Saga is a design pattern used in microservices architecture to manage distributed
+ transactions. When a business process spans multiple microservices, each with its
+  own database, a single transaction might involve multiple services. 
+  Instead of using a global transaction, which can be complex and 
+  resource-intensive, the Saga pattern breaks the transaction into a
+   series of smaller, local transactions.
+
+Choreography: In this approach, each service involved in the saga performs its
+ local transaction and then publishes an event to trigger the next step in 
+ the saga. There is no central coordinator; each service knows what to do 
+ next based on the events it receives.
+
+Orchestration: Here, a central orchestrator service coordinates the saga.
+ The orchestrator tells each service what local transaction to perform and 
+ waits for it to complete before moving on to the next step.
+
+Example:
+
+Order Service starts the saga by creating an order and publishing an OrderCreated event.
+Payment Service listens for the OrderCreated event, processes the payment, and then publishes a PaymentProcessed event.
+Inventory Service listens for the PaymentProcessed event and adjusts the inventory.
+If any step fails, compensating transactions are executed to undo the previous steps.
+
+2. Two-Phase Commit (2PC)
+Two-Phase Commit (2PC) is a protocol used to ensure all participants in a 
+distributed transaction either commit or roll back the transaction, ensuring 
+consistency across all systems.
+
+Phase 1 (Prepare): The coordinator asks all participants if they are ready 
+to commit. Each participant performs the necessary checks and locks resources
+ but doesn't yet commit. They then respond with a vote (commit or abort).
+
+Phase 2 (Commit/Rollback): If all participants vote to commit, the coordinator 
+sends a commit message, and each participant commits the transaction. 
+If any participant votes to abort, the coordinator sends a rollback message, 
+and all participants undo their changes.
+
+Use Case: 2PC is often used in distributed databases where consistency is 
+critical. However, it's synchronous and can lead to blocking, making it less
+ suitable for highly scalable microservices architectures.
+
+3. CQRS (Command Query Responsibility Segregation)
+CQRS is a pattern that separates the responsibility of reading and writing data
+ into different models:
+
+Command Model (Write): Handles the creation, update, and deletion of data (commands). 
+It's designed to ensure consistency and may involve complex business logic.
+
+Query Model (Read): Handles the retrieval of data (queries). It's optimized 
+for performance and may use different data structures or databases from the 
+command model.
+
+Example: In an e-commerce system:
+
+Order Service (Write): Handles commands like CreateOrder, UpdateOrder, and CancelOrder.
+Order Query Service (Read): Provides read-only access to order details, optimized for fast queries, 
+possibly using a different database or schema.
+Summary:
+Saga: A pattern for managing distributed transactions in microservices by breaking them into a series of
+ local transactions. It can be implemented using either choreography (events) or orchestration 
+ (central controller).
+
+Two-Phase Commit (2PC): A protocol for ensuring all participants in a distributed transaction 
+either commit or rollback, ensuring consistency across all systems. It’s synchronous and can lead to blocking.
+
+CQRS: A pattern that separates the read and write operations of a system into different models, 
+allowing each to be optimized independently.
+
+Each of these patterns is used to solve different challenges in distributed systems and 
+microservices architectures.

@@ -32,3 +32,7 @@ https://dev.to/kumarkalyan/top-5-github-repositories-to-achieve-system-design-ma
 https://github.com/karanpratapsingh/system-design
 
 https://github.com/ashishps1/awesome-system-design-resources?tab=readme-ov-file
+
+https://www.vinsguru.com/orchestration-saga-pattern-with-spring-boot/
+
+https://cbarkinozer.medium.com/how-to-use-saga-pattern-with-spring-boot-67c3428810f1

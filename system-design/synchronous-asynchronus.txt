@@ -1,0 +1,19 @@
+When to Use Synchronous vs. Asynchronous Communication
+Synchronous: Use when you need an immediate response and when the availability and
+
+ performance of the called service can be ensured. For example, retrieving data 
+ that the user expects to see immediately.
+
+Asynchronous: Use when services can operate independently, and immediate feedback
+ isn't required. This is ideal for long-running processes, high-throughput systems, or when you're processing events.
+
+Conclusion
+Synchronous Communication is simpler and provides immediate feedback, but it's 
+more tightly coupled and can be less resilient.
+Asynchronous Communication offers better scalability and resilience, but it's
+ more complex and involves eventual consistency.
+In a well-architected microservices system, you'll often find a mix of both, 
+using synchronous communication for real-time data requests and asynchronous 
+communication for background processing and event-driven tasks. Spring Boot 
+provides robust support for both styles, making it a versatile choice for 
+building microservices.
