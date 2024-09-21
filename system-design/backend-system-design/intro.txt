@@ -36,3 +36,125 @@ https://github.com/ashishps1/awesome-system-design-resources?tab=readme-ov-file
 https://www.vinsguru.com/orchestration-saga-pattern-with-spring-boot/
 
 https://cbarkinozer.medium.com/how-to-use-saga-pattern-with-spring-boot-67c3428810f1
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------------------------------********************************-----------------------------------------------------------
+
+
+
+Tiny URL
+Google Docs
+Twitter
+LeetCode
+API Rate Limiter
+BookMyShow
+Chat Application
+E-Commerce Portal
+Splitwise
+Vending Machine
+Google Autosuggest
+Uber
+Parking Lot
+Stock Exchange
+Logging System
+Authentication Service
+Rate Limitter
+URL Shortener
+Web Crawler
+Notification System
+News Feed System (Instgaram, Facebook, Twitter)
+Chat System (1:1 and group)
+Search Autocomplete system
+Youtube
+Google Drive
+Uber
+Tinder
+Spotify
+Bookmyshow
+Goibibo/Skyscanner
+Flipkart/E-commerce
+Leetcode
+Logging System
+Zoom
+Google Pay/UPI
+Nearby Friends
+Google Maps
+Ad Click Event aggregation
+Airbnb
+Real time Gaming Leaderboard
+Stock Exchange
+
+Tiny URL, Parking Lot and BookMyShow were asked the most number of times :)
+
++1 for Tiny-URL with emphasis on caching
+
+Design Parking Lot
+Single Entry and Exit Gates
+Multiple Entry and Exit Gates
+Design Multiplayer Sudoku Game
+Players have to Rotate the Pin in order to decide the turn.
+Player who is able to fill the last empty cell will win.
+Design LRU (Static + Dynamic Input Flow)
+Follow Up : Implement LFU with Least Changes in the previous design (LRU)
+Design In Memory Cache
+Design Snake and Ladder Game
+How would you change the design if wild cards are allowed.
+Design Exception Class With Test Cases
+Note: Don't forget to use Singleton Pattern Here.
+Design Money Splitter
+Design Notification Service
+Design Message Queue
+Design a Terminal/Command Prompt
+𝐇𝐢𝐠𝐡 𝐋𝐞𝐯𝐞𝐥 𝐃𝐞𝐬𝐢𝐠𝐧 𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧𝐬:
+Design Whatsapp
+Design Uber Backend
+Design Tiny URL
+Design Dream11
+Design Leetcode
+Design MS Teams
+Design Dominos/PizzaHut
+Design Big Bazaar
+Design Zomato/Swiggy
+Design Docker
+𝐃𝐒/𝐀𝐋𝐆𝐎 𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧𝐬:
+Reverse Vowels in the string.
+Using Constant space
+Longest Palindromic Substring.
+Find the largest island in Matrix of 0s and 1s
+Longest Repeating Subsequence
+Compress and Uncompress a Tree/Graph/LinkedList
+All Variations of Jump Game
+All Variations of Stocks Buy and Sell DP
+Word Search 1/2
+Median of 2 sorted arrays
+Kth largest/smallest element in the rowwise and columnwise sorted Matrix
+
+We have billions of customers in Database. Daily we need to run job at once and check with 10 to 15 Business Rule Filters for each customer in DB and find the list of customer who satisfies the Business Rules. Here each rule has 10 criteries to check. So output data should be "Customer", "Matched Rules List".
+We need to concentrate on perpormance also, because data in billions.
+
+
+
+
+https://github.com/ashishps1/awesome-system-design-resources
+https://github.com/karanpratapsingh/system-design
+https://github.com/kumaransg/LLD?tab=readme-ov-file
+https://github.com/bhavul/System-Design-Cheatsheet
+https://medium.com/@jinyuex/mastering-microsoft-system-design-interviews-strategies-questions-and-solutions-9394d267b9d5
+
+YouTube Channels
+
+Hello Interview - Tech Interview Preparation - https://www.youtube.com/@hello_interview/videos
+Exponent - https://www.youtube.com/playlist?list=PLrtCHHeadkHp92TyPt1Fj452_VGLipJnL
+Gaurav Sen - https://www.youtube.com/playlistlist=PLMCXHnjXnTntETbhRNiGMGqyrXlMQxwBO
+CodeKarle - https://www.youtube.com/playlist?list=PLhgw50vUymyckXl3D1IlXoVl94wknJfUC
