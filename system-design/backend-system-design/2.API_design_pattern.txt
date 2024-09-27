@@ -1,0 +1,141 @@
+API Design Patterns in Node.js with Examples
+API design patterns define the structure and interaction of APIs, ensuring that
+ they are scalable, maintainable, and secure. Below are common patterns in Node.js
+  along with examples, authentication/authorization mechanisms, and how to
+   secure an API.
+
+Common API Design Patterns
+REST (Representational State Transfer) REST is a widely used design pattern for 
+building APIs. It uses HTTP methods to map CRUD operations:
+
+GET: Retrieve data
+POST: Create data
+PUT/PATCH: Update data
+DELETE: Delete data   
+
+Example (Node.js with Express):
+
+const express = require('express');
+const app = express();
+app.use(express.json());
+
+// Sample data
+let movies = [
+  { id: 1, name: 'Inception' },
+  { id: 2, name: 'Interstellar' },
+];
+
+// GET request to fetch all movies
+app.get('/api/movies', (req, res) => {
+  res.json(movies);
+});
+
+// POST request to add a new movie
+app.post('/api/movies', (req, res) => {
+  const newMovie = { id: movies.length + 1, name: req.body.name };
+  movies.push(newMovie);
+  res.status(201).json(newMovie);
+});
+
+app.listen(5000, () => console.log('Server running on port 5000'));
+
+2. GraphQL
+ Unlike REST, GraphQL allows clients to query specific data they need,
+ reducing over-fetching and under-fetching of data.
+
+
+ 3. Event-Driven API (Pub/Sub Pattern) In this pattern, the server doesn’t send 
+ responses directly. Instead, events are published to a message queue, and clients
+  subscribe to receive updates.
+
+  const redis = require('redis');
+const publisher = redis.createClient();
+const subscriber = redis.createClient();
+
+subscriber.on('message', (channel, message) => {
+  console.log(`Received message from ${channel}: ${message}`);
+});
+
+subscriber.subscribe('movie_updates');
+
+// Publish a message
+publisher.publish('movie_updates', 'New movie added');
+
+
+
+1. Authentication and Authorization Mechanisms
+JWT (JSON Web Token) JWT is a stateless authentication mechanism where the server
+ provides a token that is used for subsequent requests.
+
+
+ const express = require('express');
+const jwt = require('jsonwebtoken');
+const app = express();
+
+app.use(express.json());
+
+// Dummy user for illustration
+const user = { id: 1, username: 'john', password: 'secret' };
+
+// Login route
+app.post('/login', (req, res) => {
+  if (req.body.username === user.username && req.body.password === user.password) {
+    const token = jwt.sign({ id: user.id }, 'secret_key', { expiresIn: '1h' });
+    res.json({ token });
+  } else {
+    res.status(401).json({ message: 'Invalid credentials' });
+  }
+});
+
+// Middleware to protect routes
+const verifyToken = (req, res, next) => {
+  const token = req.headers['authorization'];
+  if (!token) return res.status(403).json({ message: 'No token provided' });
+
+  jwt.verify(token, 'secret_key', (err, decoded) => {
+    if (err) return res.status(500).json({ message: 'Failed to authenticate token' });
+    req.userId = decoded.id;
+    next();
+  });
+};
+
+// Protected route
+app.get('/api/secure-data', verifyToken, (req, res) => {
+  res.json({ data: 'This is secured data' });
+});
+
+app.listen(5000, () => console.log('Server running on port 5000'));
+
+
+2. OAuth2 OAuth2 is an authorization framework that allows third-party applications
+ to access user data without exposing credentials. It is widely used in 
+ Single Sign-On (SSO).
+
+Example Use Case:
+
+A user logs into your Node.js app using their Google or Facebook account.
+Libraries:
+
+passport-oauth2: For implementing OAuth2 in Node.js.
+passport-google-oauth20: For Google OAuth.
+
+
+
+3. Authorization
+Role-Based Access Control (RBAC): Control what resources a user can access based 
+on their roles (e.g., admin, user).
+
+const authorize = (roles) => {
+  return (req, res, next) => {
+    const userRole = req.user.role; // Assume req.user contains user data
+    if (!roles.includes(userRole)) {
+      return res.status(403).json({ message: 'Forbidden' });
+    }
+    next();
+  };
+};
+
+app.get('/admin', verifyToken, authorize(['admin']), (req, res) => {
+  res.json({ message: 'Welcome admin' });
+});
+

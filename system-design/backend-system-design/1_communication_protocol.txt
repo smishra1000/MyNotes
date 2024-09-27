@@ -1,0 +1,236 @@
+Client-server communication in system design involves various protocols that 
+allow systems to communicate over the network. Here are key protocols and 
+techniques used for this communication
+
+1. HTTP (HyperText Transfer Protocol)
+
+HTTP is the most common protocol used for web communication, where a client makes 
+a request to a server, and the server responds with data.
+
+Example Use Case: Fetching Data
+
+React (Frontend): Use fetch or axios to make HTTP requests.
+Node.js (Backend): Use Express to handle HTTP requests.
+
+
+HTTP
+The Hypertext Transfer Protocol (HTTP) is a half-duplex protocol used for 
+communication between web browsers (clients) and web servers. It serves as 
+the foundation for data exchange on the World Wide Web.
+
+HTTP is a protocol that operates over the TCP¹ (Transmission Control Protocol) 
+transport layer protocol. By default, it uses port 80 for unencrypted connections 
+and port 443 for encrypted connections (using HTTPS).
+
+HTTP — is a classic example of synchronous client-server interaction, when the 
+client initiates a request, waiting for the result, and the server responds with 
+a corresponding response.
+
+Key components:
+Uniform Resource Identifier (URI): The client includes a URI in the request to
+ specify the desired resource. The URI consists of a URL (Uniform Resource Locator)
+  or URN (Uniform Resource Name).
+
+HTTP Methods: HTTP defines several methods (also known as verbs) that specify the 
+desired action to be performed on the server. The most commonly used methods are:
+GET: Retrieves a representation of a resource.
+POST: Submits data to be processed by the server, often used for form submissions.
+PUT: Updates or replaces a resource with the provided data.
+DELETE: Removes a specified resource.
+4. Headers:
+
+The client can include additional headers in the request to provide information to
+ the server. Headers can specify things like the client’s user agent, accepted 
+ content types, authentication credentials, and more.
+  Example: User-Agent: Mozilla/5.0 , Accept: text/html
+
+The server includes headers in the response to provide information back to the 
+client. Headers can specify things like the content type of the response, 
+caching directives, cookies, and more. Example: Content-Type: application/json ,
+ Cache-Control: max-age=3600
+5. Body: For methods like POST and PUT, the client can include a request body
+ that contains additional data to be sent to the server. The format of the request
+  body depends on the data being transmitted (e.g., form data, JSON payload).
+   The response body contains the actual data returned by the server, 
+   format depends on the requested resource.
+
+Structure of HTTP request:
+A request typically includes some form of input or data payload that is needed by 
+the server to perform the requested action.
+
+POST /api/v1/users HTTP/1.1
+Host: example.com
+Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+
+{
+    "name": "Alice",
+    "email": "alice@example.com",
+    "password": "secret123"
+}
+
+
+In this example, the request uses the HTTP POST method to create a new user 
+resource on the server. The URI or endpoint is /api/v1/users, and the request
+ includes several headers, such as Content-Type and Authorization. Finally, the 
+ request body includes a JSON object with data for the new user, including their 
+ name, email, and password.
+
+The response would look like this:
+
+HTTP/1.1 201 Created
+Content-Type: application/json
+
+{
+"id": "1234567890",
+"name": "Alice",
+"email": "alice@example.com",
+"createdAt": "2023-05-25T10:15:30Z"
+}
+
+
+
+React Code---------
+
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
+const MovieList = () => {
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/api/movies')
+      .then(response => setMovies(response.data))
+      .catch(error => console.log(error));
+  }, []);
+
+  return (
+    <div>
+      {movies.map(movie => <p key={movie.id}>{movie.name}</p>)}
+    </div>
+  );
+};
+
+export default MovieList;
+
+Node express----------------------------------
+const express = require('express');
+const app = express();
+
+app.get('/api/movies', (req, res) => {
+  const movies = [{ id: 1, name: 'Inception' }, { id: 2, name: 'Interstellar' }];
+  res.json(movies);
+});
+
+app.listen(5000, () => console.log('Server running on port 5000'));
+
+
+
+2. Polling
+Polling is a technique where the client continuously sends requests to the server at regular intervals to check for updates.
+
+Example Use Case: Chat Application
+
+The client sends an HTTP request every few seconds to check for new messages.
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    axios.get('http://localhost:5000/api/messages')
+      .then(response => setMessages(response.data));
+  }, 5000); // Poll every 5 seconds
+
+  return () => clearInterval(interval);
+}, []);
+
+3. Webhook
+Webhooks are server-to-server callbacks triggered when an event occurs. Instead 
+of the client polling the server, the server sends data to a specified URL.
+
+Example Use Case: Payment Notifications
+
+A payment service (e.g., Stripe) sends a POST request to your server when a 
+payment is completed.
+
+app.post('/webhook/payment', (req, res) => {
+  const { paymentStatus } = req.body;
+  console.log('Payment status:', paymentStatus);
+  res.sendStatus(200); // Respond with OK
+});
+
+
+4. SSE (Server-Sent Events)
+SSE allows servers to push updates to the client over HTTP. The client maintains a 
+long-lived connection and receives automatic updates.
+
+Example Use Case: Stock Price Updates
+
+Real-time updates pushed from the server whenever a stock price changes.
+
+useEffect(() => {
+  const eventSource = new EventSource('http://localhost:5000/api/stocks');
+
+  eventSource.onmessage = (event) => {
+    console.log('New stock price:', event.data);
+  };
+
+  return () => eventSource.close();
+}, []);
+
+app.get('/api/stocks', (req, res) => {
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+
+  setInterval(() => {
+    const stockPrice = Math.random() * 100;
+    res.write(`data: ${stockPrice}\n\n`);
+  }, 3000); // Send stock price every 3 seconds
+});
+
+
+5. WebSockets
+WebSockets enable full-duplex communication between client and server, allowing real-time communication.
+
+Example Use Case: Real-time Chat
+
+Messages are instantly pushed between clients and the server without the need for continuous polling.
+
+React (with WebSocket):
+
+useEffect(() => {
+  const ws = new WebSocket('ws://localhost:5000');
+
+  ws.onmessage = (event) => {
+    const newMessage = event.data;
+    console.log('New message:', newMessage);
+  };
+
+  return () => ws.close();
+}, []);
+
+
+Node.js (WebSocket Server with ws library):
+
+
+const WebSocket = require('ws');
+const wss = new WebSocket.Server({ port: 5000 });
+
+wss.on('connection', ws => {
+  ws.on('message', message => {
+    console.log('Received:', message);
+    ws.send(`Echo: ${message}`);
+  });
+});
+
+
+6. gRPC (Google Remote Procedure Call)
+gRPC is a high-performance protocol that allows communication between client and 
+server using strongly-typed contracts. It uses Protocol Buffers (protobufs) for 
+serialization and HTTP/2 for transport.
+
+Example Use Case: Microservices Communication
+
+A microservice (written in Node.js) communicates with another microservice using 
+gRPC.
+
+
+https://medium.com/@pavlokolodka/efficient-client-server-communication-an-overview-of-protocols-and-techniques-f73c1c1016d#:~:text=Modern%20web%20applications%20require%20efficient%20and%20seamless%20communication
